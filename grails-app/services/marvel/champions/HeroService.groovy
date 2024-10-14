@@ -1,11 +1,11 @@
 package marvel.champions
 
-import grails.gorm.transactions.Transactional
+import grails.gorm.services.Service
 
-@Transactional
-class HeroService {
+@Service(Hero)
+interface HeroService {
 
-    def serviceMethod() {
-
+    Hero save(String heroName, String alterEgo, boolean ownIt, int gameCount,String release
+    )
     }
-}
+

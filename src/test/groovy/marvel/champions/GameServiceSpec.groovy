@@ -1,9 +1,9 @@
 package marvel.champions
 
-import grails.testing.gorm.DomainUnitTest
+import grails.testing.services.ServiceUnitTest
 import spock.lang.Specification
 
-class Modular-SetSpec extends Specification implements DomainUnitTest<Modular-Set> {
+class GameServiceSpec extends Specification implements ServiceUnitTest<GameService>{
 
     def setup() {
     }

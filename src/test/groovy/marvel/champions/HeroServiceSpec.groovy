@@ -11,8 +11,15 @@ class HeroServiceSpec extends Specification implements ServiceUnitTest<HeroServi
     def cleanup() {
     }
 
-    void "test something"() {
-        expect:"fix me"
-            true == false
+    void "test save hero"() {
+        when:
+        Hero hero = service.save(heroName: "Iron Man", alterEgo: "Tony Stark", ownIt: true, gameCount: 2, release: "3")
+        
+        then:
+        hero.heroName == "Iron Man"
+        hero.alterEgo == "Tony Stark"
+        hero.ownIt == true
+        hero.gameCount == 2
+        hero.release == "3"
     }
 }
