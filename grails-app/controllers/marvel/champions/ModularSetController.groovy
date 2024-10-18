@@ -2,5 +2,5 @@ package marvel.champions
 
 class ModularSetController {
 
-    def index() { }
+   static scaffold = ModularSet
 }

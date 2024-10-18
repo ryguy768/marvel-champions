@@ -19,25 +19,23 @@ class Game {
     int difficultyRating
     String date
 
-
     static constraints = {
-        name Maxsize: 100
-        hero1 inList: []
-        aspect1 inList: ['Agression', 'Justice', 'Leadership', 'Protection']
-        hero2 inList: []
-        aspect2 inList: ['Agression', 'Justice', 'Leadership', 'Protection']
-        hero3 inList: []
-        aspect3 inList: ['Agression', 'Justice', 'Leadership', 'Protection']
-        hero4 inList: []
-        aspect4 inList: ['Agression', 'Justice', 'Leadership', 'Protection']
-        scenario Maxsize: 100
-        difficultyLevel inList: ['Standard', 'Expert'] 
-        modularSet inList: []
-        outcome inList: ['Win', 'Lose']
-        funRating max: 5
-        difficultyRating max: 5
-        date Maxsize: 100
-
-
+        name maxSize: 100
+        hero1 nullable: true, inList: [] 
+        aspect1 nullable: true, inList: ['Agression', 'Justice', 'Leadership', 'Protection']
+        hero2 nullable: true, inList: [] 
+        aspect2 nullable: true, inList: ['Agression', 'Justice', 'Leadership', 'Protection']
+        hero3 nullable: true, inList: [] 
+        aspect3 nullable: true, inList: ['Agression', 'Justice', 'Leadership', 'Protection']
+        hero4 nullable: true, inList: [] 
+        aspect4 nullable: true, inList: ['Agression', 'Justice', 'Leadership', 'Protection']
+        scenario maxSize: 100
+        difficultyLevel nullable: false, inList: ['Standard', 'Expert']
+        modularSet nullable: true, maxSize: 255
+        outcome nullable: false, inList: ['Win', 'Lose']
+        funRating min: 0, max: 5
+        difficultyRating min: 0, max: 5
+        date maxSize: 100
     }
 }
+

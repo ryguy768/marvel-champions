@@ -1,11 +1,11 @@
 package marvel.champions
 
-import grails.gorm.transactions.Transactional
+import grails.gorm.services.Service
 
-@Transactional
-class ModularSetService {
+@Service(ModularSet)
+interface ModularSetService {
 
-    def serviceMethod() {
+    ModularSet save(String encounterName, String abbreviation)
 
     }
-}
+

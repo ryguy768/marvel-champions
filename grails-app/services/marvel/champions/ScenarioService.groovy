@@ -1,11 +1,10 @@
 package marvel.champions
 
-import grails.gorm.transactions.Transactional
+import grails.gorm.services.Service
 
-@Transactional
-class ScenarioService {
+@Service(Scenario)
+interface ScenarioService {
 
-    def serviceMethod() {
+    Scenario save(String scenarioName)
 
     }
-}

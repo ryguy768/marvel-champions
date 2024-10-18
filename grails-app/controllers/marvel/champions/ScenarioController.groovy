@@ -2,5 +2,5 @@ package marvel.champions
 
 class ScenarioController {
 
-    def index() { }
+    static scaffold = Scenario
 }
