@@ -2,5 +2,5 @@ package marvel.champions
 
 class GameController {
 
-    def index() { }
+    static scaffold = Game
 }
