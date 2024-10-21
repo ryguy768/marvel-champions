@@ -7,4 +7,7 @@ class Scenario {
     static constraints = {
         scenarioName maxSize: 100
     }
+    String toString(){
+        return "$scenarioName"
+    }
 }

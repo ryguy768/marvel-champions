@@ -14,4 +14,7 @@ class Hero {
         release maxSize: 100
         gameCount min: 0
     }
+    String toString (){
+        return "$heroName ($alterEgo)"
+    }
 }

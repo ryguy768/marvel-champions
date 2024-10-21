@@ -8,4 +8,7 @@ class ModularSet {
         encounterName maxSize: 100
         abbreviation maxSize: 100
     }
+    String toString(){
+        return "$encounterName ($abbreviation)"
+    }
 }
