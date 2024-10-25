@@ -46,6 +46,7 @@
 <div class="svg" role="presentation">
     <div class="grails-logo-container">
         <asset:image src="grails-cupsonly-logo-white.svg" class="grails-logo"/>
+        <p> HELLO</p>
     </div>
 </div>
 
@@ -65,7 +66,7 @@
             <ul>
                 <g:each var="c" in="${grailsApplication.controllerClasses.sort { it.fullName } }">
                     <li class="controller">
-                        <g:link controller="${c.logicalPropertyName}">${c.fullName}</g:link>
+                        <g:link controller="${c.logicalPropertyName}" class="button">Go to ${c.logicalPropertyName}</g:link>
                     </li>
                 </g:each>
             </ul>
