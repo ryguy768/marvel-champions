@@ -711,8 +711,8 @@ img.grails-logo {
     font-weight: bolder;
 } */
 .button {
-  background-color: #0236a3;
-  border: none;
+  background-color: transparent;
+  border: 2px solid white;
   color: white;
   padding: 15px 32px;
   text-align: center;
@@ -720,4 +720,10 @@ img.grails-logo {
   display: inline-block;
   font-size: 16px;
   border-radius: 12px;
+  transition: 1s ease;
+}
+
+.button:hover {
+  background-color: #333333;
+  color: white;
 }
