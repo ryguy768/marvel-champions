@@ -1,25 +1,7 @@
-@font-face {
-    font-family: 'marvel';
-    src: url(MarvelRegular-Dj83.ttf);
+#show-game>ol.game {
+    color: aqua;
 }
 
-.marvel-title-container {
-    background-image: url("hero-background.png");
-    background-size: 100% 100%;
-    margin-bottom: 15px;
-    color: blue;
-    height: 400px;
-    text-align: center;
-}
-
-.marvel-title-container>p {
-    font-family: 'marvel';
-    font-size: 50px;
-    line-height: 40px;
-    font-weight: 200;
-    text-align: center;
-    margin: 0;
-    padding: 20px 0;
-    width: 100%;
-    color: #c0d3db;
+#show-hero>span#gameCount-label.property-label {
+    color: aqua;
 }

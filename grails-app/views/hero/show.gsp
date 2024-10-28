@@ -16,15 +16,12 @@
         </div>
         <div id="show-hero" class="content scaffold-show" role="main">
             <h1><g:message code="default.show.label" args="[entityName]" /></h1>
+        
             <g:if test="${flash.message}">
             <div class="message" role="status">${flash.message}</div>
             </g:if>
             <f:display bean="hero" />
-            <p 
-            style="position: relative; left: 450px; "
-            > 
-            Game Count: 2 
-            </p>
+             
             <g:form resource="${this.hero}" method="DELETE">
                 <fieldset class="buttons">
                     <g:link class="edit" action="edit" resource="${this.hero}"><g:message code="default.button.edit.label" default="Edit" /></g:link>

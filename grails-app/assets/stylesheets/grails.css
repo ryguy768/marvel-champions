@@ -86,23 +86,23 @@ a.navbar-brand {
   font-size: 19px !important;
 }
 
-.navbar-dark .navbar-nav > .active > a,
-.navbar-dark .navbar-nav > .active > a:hover,
-.navbar-dark .navbar-nav > .active > a:focus {
+.navbar-dark .navbar-nav>.active>a,
+.navbar-dark .navbar-nav>.active>a:hover,
+.navbar-dark .navbar-nav>.active>a:focus {
   background-color: transparent;
   color: white;
 }
 
-.navbar-nav > li.active > a {
+.navbar-nav>li.active>a {
   color: white !important;
 }
 
-.navbar-nav > li > a:hover {
+.navbar-nav>li>a:hover {
   background-color: #a50000 !important;
   color: white !important;
 }
 
-.navbar-nav > li > a {
+.navbar-nav>li>a {
   color: #c0d3db;
 }
 
@@ -428,6 +428,7 @@ samp {
 }
 
 @media (max-width: 988px) {
+
   .col1,
   .col2 {
     width: 98% !important;
@@ -453,7 +454,7 @@ html {
 }
 
 a {
-  color: #2559a7;
+  color: #9ed3ff;
   text-decoration: underline;
 }
 
@@ -474,7 +475,7 @@ h2 {
 
 h3,
 #toctitle,
-.sidebarblock > .content > .title {
+.sidebarblock>.content>.title {
   font-size: 1.375em;
   font-weight: bold;
 }
@@ -644,7 +645,7 @@ h8 {
   clear: both;
 }
 
-#content .row > h1 {
+#content .row>h1 {
   font-size: 34px;
   line-height: 40px;
   font-weight: 200;
@@ -678,13 +679,13 @@ h8 {
   clear: both;
 }
 
-#content .colset-2-its > h1 {
+#content .colset-2-its>h1 {
   padding-bottom: 15px;
   margin-top: 15px;
   margin-bottom: 0;
 }
 
-#content .colset-2-its > p {
+#content .colset-2-its>p {
   margin-top: 0;
   padding-bottom: 5px;
   text-align: center;
@@ -753,7 +754,7 @@ h8 {
   background-position: 0 -400px;
 }
 
-#content .colset-2-its article > h1 {
+#content .colset-2-its article>h1 {
   font-size: 19px;
   font-weight: 600;
   margin-bottom: 0;
@@ -774,7 +775,7 @@ h8 {
   padding-bottom: 30px;
 }
 
-#content .colset-3-article > h1 {
+#content .colset-3-article>h1 {
   font-size: 24px;
 }
 
@@ -1157,10 +1158,10 @@ body,
   line-height: 1.3;
 }
 
-.presentations .urls {
-}
+.presentations .urls {}
 
 @media screen and (max-width: 767px) {
+
   .presentations .img.screenshot,
   .video .metadata {
     float: none;

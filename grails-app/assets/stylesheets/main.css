@@ -21,13 +21,11 @@ h6 {
 html {
   background-color: #ddd;
   background-image: -moz-linear-gradient(center top, #aaa, #ddd);
-  background-image: -webkit-gradient(
-    linear,
-    left top,
-    left bottom,
-    color-stop(0, #aaa),
-    color-stop(1, #ddd)
-  );
+  background-image: -webkit-gradient(linear,
+      left top,
+      left bottom,
+      color-stop(0, #aaa),
+      color-stop(1, #ddd));
   background-image: linear-gradient(to bottom, #aaa, #ddd);
   filter: progid:DXImageTransform.Microsoft.gradient(startColorStr='#aaaaaa', EndColorStr='#dddddd');
   background-repeat: no-repeat;
@@ -90,8 +88,7 @@ img {
   margin: 1em;
 }
 
-.content {
-}
+.content {}
 
 .content h1 {
   border-bottom: 1px solid #cccccc;
@@ -245,9 +242,16 @@ fieldset,
 
 .fieldcontain label,
 .fieldcontain .property-label {
-  color: #666666;
+  color: #ffffff;
   text-align: right;
   width: 25%;
+}
+
+.fieldcontain>span.property-label#gameCount-label {
+  color: #ffffff;
+  text-align: right;
+  width: 25%;
+
 }
 
 .fieldcontain .property-label {
@@ -380,14 +384,12 @@ fieldset.embedded legend {
 
 .errors li {
   list-style: none;
-  background: transparent url(../images/skin/exclamation.png) 0.5em 50%
-    no-repeat;
+  background: transparent url(../images/skin/exclamation.png) 0.5em 50% no-repeat;
   text-indent: 2.2em;
 }
 
 .message {
-  background: transparent url(../images/skin/information.png) 0.5em 50%
-    no-repeat;
+  background: transparent url(../images/skin/information.png) 0.5em 50% no-repeat;
   text-indent: 2.2em;
 }
 
@@ -440,13 +442,13 @@ tr {
   border: 0;
 }
 
-tr > td:first-child,
-tr > th:first-child {
+tr>td:first-child,
+tr>th:first-child {
   padding-left: 1.25em;
 }
 
-tr > td:last-child,
-tr > th:last-child {
+tr>td:last-child,
+tr>th:last-child {
   padding-right: 1.25em;
 }
 
@@ -461,13 +463,11 @@ th {
 th {
   background-color: #efefef;
   background-image: -moz-linear-gradient(top, #ffffff, #eaeaea);
-  background-image: -webkit-gradient(
-    linear,
-    left top,
-    left bottom,
-    color-stop(0, #ffffff),
-    color-stop(1, #eaeaea)
-  );
+  background-image: -webkit-gradient(linear,
+      left top,
+      left bottom,
+      color-stop(0, #ffffff),
+      color-stop(1, #eaeaea));
   filter: progid:DXImageTransform.Microsoft.gradient(startColorStr='#ffffff', EndColorStr='#eaeaea');
   -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorStr='#ffffff', EndColorStr='#eaeaea')";
   color: #666666;
@@ -650,18 +650,16 @@ a.skip {
 
 .marvel-title-container {
   background: rgb(0, 0, 0);
-  background: linear-gradient(
-    0deg,
-    rgba(0, 0, 0, 1) 0%,
-    rgba(19, 19, 19, 1) 100%
-  );
+  background: linear-gradient(0deg,
+      rgba(0, 0, 0, 1) 0%,
+      rgba(19, 19, 19, 1) 100%);
   margin-bottom: 0px;
   color: blue;
   height: 250px;
   text-align: center;
 }
 
-.marvel-title-container > p {
+.marvel-title-container>p {
   font-family: "marvel";
   font-size: 130px;
   line-height: 120px;
@@ -671,12 +669,14 @@ a.skip {
   width: 100%;
   color: #ffffff;
 }
-.marvel-title-container > p.highlight {
+
+.marvel-title-container>p.highlight {
   background-color: #c8102e;
   display: inline-block;
   height: 115px;
   width: 285px;
 }
+
 span {
   background-image: url("hero-background.jpg");
   background-clip: text;
@@ -687,6 +687,7 @@ span {
   /* width: 100%;
   height: 100%; */
 }
+
 p.marvel-text {
   p.marvel-text {
     background-color: #c8102e;
@@ -720,10 +721,10 @@ img.grails-logo {
   display: inline-block;
   font-size: 16px;
   border-radius: 12px;
-  transition: 1s ease;
+  transition: .75s ease;
 }
 
 .button:hover {
-  background-color: #333333;
+  background-color: #535252;
   color: white;
 }
