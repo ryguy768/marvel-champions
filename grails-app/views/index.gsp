@@ -80,7 +80,9 @@
                         </li>
                     </g:each>
                 </ul>
+
             </div>
+            
         </section>
     </div>
 
