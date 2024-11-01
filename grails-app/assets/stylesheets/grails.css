@@ -70,7 +70,7 @@ pre {
 
 .navbar-dark,
 .navbar-static-top {
-  background: #161618;
+  background: #121212;
   /* background: linear-gradient(
     90deg,
     rgba(0, 51, 160, 1) 27%,
@@ -631,8 +631,8 @@ h8 {
 }
 
 #content {
-  background-color: #161618;
-  color: #ffffff;
+  background-color: #121212;
+  color: #E0E0E0;
 }
 
 #content .row:before,
