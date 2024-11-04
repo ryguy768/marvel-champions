@@ -17,6 +17,8 @@
         <div id="show-hero" class="content scaffold-show" role="main">
             <h1><g:message code="default.show.label" args="[entityName]" /></h1>
         
+            <p>Game count: ${gameCount}</p>
+            
             <g:if test="${flash.message}">
             <div class="message" role="status">${flash.message}</div>
             </g:if>

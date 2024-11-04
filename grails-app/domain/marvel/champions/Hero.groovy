@@ -7,6 +7,7 @@ class Hero {
     boolean ownIt
     int gameCount
     String release
+    Long id
     
     static constraints = {
         heroName maxSize: 100

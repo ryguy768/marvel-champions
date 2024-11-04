@@ -44,5 +44,6 @@ class Game {
     String getName() {
         return "$hero1 $scenario"
     }
+    static belongsTo = [hero: Hero]
 }
 
