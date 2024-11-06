@@ -12,8 +12,8 @@ class BootStrap {
 
     def init = { servletContext ->
 
-    
-        
+       
+
         Hero spiderMan = heroService.save("Spider-Man", "Peter Parker", true, 5, "0")
         Hero ironMan = heroService.save("Iron-Man", "Tony Stark", true, 3, "0")
 

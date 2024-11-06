@@ -37,6 +37,9 @@
                     <li id="Scenario" class="controller">
                         <a href="/scenario/index" class="button">Go to scenario</a>
                     </li>
+                    <li id="HeroGame" class="controller">
+                        <a href="/heroGame/index" class="button">Go to Hero Game</a>
+                    </li>
                 </ul>
             </div>
 

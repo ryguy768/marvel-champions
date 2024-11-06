@@ -11,10 +11,12 @@ class HeroController {
     static scaffold = Hero
     
     def show(Long id) {
-    Hero hero = heroService.get(id)
-    int gameCount = heroService.countGames(id)
-    respond hero, model: [gameCount: gameCount]
-}
+        log.error("Bacon")
+        Hero hero = heroService.get(id)
+        // int gameCount = heroService.countGames(hero)
+        log.error("Game Count: ${hero.heroGames.size()}")
+        respond hero //, model: [gameCount: gameCount]
+    }
 
 }
 

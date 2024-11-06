@@ -2,14 +2,6 @@ package marvel.champions
 
 class Game {
     String name
-    Hero hero1
-    Aspect aspect1
-    Hero hero2 
-    Aspect aspect2
-    Hero hero3 
-    Aspect aspect3
-    Hero hero4
-    Aspect aspect4
     Scenario scenario
     DifficultyLevel difficultyLevel
     ModularSet modularSet
@@ -18,20 +10,14 @@ class Game {
     int difficultyRating
     Date date
 
+     static hasMany = [heroGames : HeroGame]
+
      enum DifficultyLevel {Standard, Expert};
      enum Aspect {Agression, Justice, Leadership, Protection}
      enum Outcome {Win, Lose}
 
     static constraints = {
         name maxSize: 100
-        hero1 nullable: false
-        aspect1 nullable: false
-        hero2 nullable: true
-        aspect2 nullable: true
-        hero3 nullable: true
-        aspect3 nullable: true
-        hero4 nullable: true
-        aspect4 nullable: true
         scenario nullable: false
         difficultyLevel nullable: false
         modularSet nullable: false
@@ -42,8 +28,7 @@ class Game {
     }
 
     String getName() {
-        return "$hero1 $scenario"
+        return "$scenario"
     }
-    static belongsTo = [hero: Hero]
 }
 

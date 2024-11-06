@@ -8,6 +8,9 @@ class Hero {
     int gameCount
     String release
     Long id
+
+    static hasMany = [heroGames : HeroGame]
+    
     
     static constraints = {
         heroName maxSize: 100
@@ -18,4 +21,4 @@ class Hero {
     String toString (){
         return "$heroName ($alterEgo)"
     }
-}
+} 
