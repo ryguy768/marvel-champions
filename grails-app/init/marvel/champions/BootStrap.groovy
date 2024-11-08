@@ -1,3 +1,4 @@
+/* groovylint-disable NglParseError, UnusedVariable */
 package marvel.champions
 
 import groovy.transform.CompileStatic
@@ -7,22 +8,31 @@ class BootStrap {
 
     GameService gameService
     HeroService heroService
-    ModularSetService modularSetService 
-    ScenarioService scenarioService 
+    ModularSetService modularSetService
+    ScenarioService scenarioService
 
     def init = { servletContext ->
+        Hero spiderMan = heroService.save('Spider-Man', 'Peter Parker', true, 5, '0')
+        Hero ironMan = heroService.save('Iron-Man', 'Tony Stark', true, 3, '0')
 
-       
+        ModularSet bombScare = modularSetService.save('Bomb Scare', 'Bmb Scr')
+        ModularSet hydraPatrol = modularSetService.save('Hydra Patrol', 'Hydr Ptrl')
 
-        Hero spiderMan = heroService.save("Spider-Man", "Peter Parker", true, 5, "0")
-        Hero ironMan = heroService.save("Iron-Man", "Tony Stark", true, 3, "0")
+        Scenario rhino = scenarioService.save('Rhino')
 
-        ModularSet bombScare = modularSetService.save("Bomb Scare", "Bmb Scr")
-        ModularSet hydraPatrol = modularSetService.save("Hydra Patrol","Hydr Ptrl")
+        Game gameOne = gameService.save(new Game(
+            name: 'Game One',
+            scenario: rhino,
+            difficultyLevel: Game.DifficultyLevel.Standard,
+            modularSet: bombScare,
+            outcome: Game.Outcome.Win,
+            funRating: 3,
+            difficultyRating: 4
 
-        Scenario rhino = scenarioService.save("Rhino")
-
+        ))
     }
+
     def destroy = {
     }
+
 }

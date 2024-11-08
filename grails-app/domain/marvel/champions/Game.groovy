@@ -1,6 +1,11 @@
 package marvel.champions
 
 class Game {
+
+    enum DifficultyLevel { Standard, Expert };
+    enum Aspect { Agression, Justice, Leadership, Protection }
+    enum Outcome { Win, Lose }
+
     String name
     Scenario scenario
     DifficultyLevel difficultyLevel
@@ -8,13 +13,11 @@ class Game {
     Outcome outcome
     int funRating
     int difficultyRating
-    Date date
+    // Date date // TODO lookup dateCreated and lastUpdated
+    Date dateCreated
+    Date lastUpdated
 
-     static hasMany = [heroGames : HeroGame]
-
-     enum DifficultyLevel {Standard, Expert};
-     enum Aspect {Agression, Justice, Leadership, Protection}
-     enum Outcome {Win, Lose}
+    static hasMany = [heroGames : HeroGame]
 
     static constraints = {
         name maxSize: 100
@@ -24,11 +27,21 @@ class Game {
         outcome nullable: false
         funRating min: 0, max: 5
         difficultyRating min: 0, max: 5
-        date nullable: false 
     }
 
-    String getName() {
-        return "$scenario"
+    // String getName() {
+    //     return "$scenario"
+    // }
+
+    String toString() {
+        return name
     }
+    def beforeInsert() {
+        dateCreated = new Date()
+    }
+
+    def beforeUpdate() {
+        lastUpdated = new Date()
+    }
+
 }
-

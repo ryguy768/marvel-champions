@@ -1,6 +1,7 @@
 package marvel.champions
 
 class ModularSet {
+
     String encounterName
     String abbreviation
 
@@ -8,7 +9,8 @@ class ModularSet {
         encounterName maxSize: 100
         abbreviation maxSize: 100
     }
-    String toString(){
+    String toString() {
         return "$encounterName ($abbreviation)"
     }
+
 }

@@ -7,12 +7,12 @@ interface HeroGameService {
 
     HeroGame get(Serializable id)
 
-     List<HeroGame> list(Map args)
+    List<HeroGame> list(Map args)
 
-     Long count()
+    Long count()
 
-     void delete(Serializable id)
+    void delete(Serializable id)
 
-     HeroGame save(HeroGame heroGame)
+    HeroGame save(HeroGame heroGame)
 
 }
