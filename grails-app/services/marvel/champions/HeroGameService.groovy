@@ -13,6 +13,8 @@ interface HeroGameService {
 
     void delete(Serializable id)
 
+    HeroGame save(Game game, Hero hero, HeroGame.Aspect aspect)
+
     HeroGame save(HeroGame heroGame)
 
 }

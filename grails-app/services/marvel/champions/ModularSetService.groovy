@@ -7,5 +7,7 @@ interface ModularSetService {
 
     ModularSet save(String encounterName, String abbreviation)
 
-    }
+    ModularSet save(ModularSet modularSet)
+
+}
 

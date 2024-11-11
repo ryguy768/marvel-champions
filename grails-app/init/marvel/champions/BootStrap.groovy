@@ -12,15 +12,56 @@ class BootStrap {
     ScenarioService scenarioService
 
     def init = { servletContext ->
-        Hero spiderMan = heroService.save('Spider-Man', 'Peter Parker', true, 5, '0')
-        Hero ironMan = heroService.save('Iron-Man', 'Tony Stark', true, 3, '0')
+        Hero spiderMan = new Hero(
+            heroName: 'Spider-Man',
+            alterEgo: 'Peter Parker',
+            ownIt: true,
+            gameCount: 5,
+            release: '0'
+            ).save()
 
-        ModularSet bombScare = modularSetService.save('Bomb Scare', 'Bmb Scr')
-        ModularSet hydraPatrol = modularSetService.save('Hydra Patrol', 'Hydr Ptrl')
+        Hero ironMan = new Hero(
+          heroName: 'Iron-Man',
+            alterEgo: 'Tony Stark',
+            ownIt: true,
+            gameCount: 3,
+            release: '0'
+            ).save()
 
-        Scenario rhino = scenarioService.save('Rhino')
+        Hero wasp = new Hero(
+            heroName: 'Wasp',
+            alterEgo: 'Nadia Van Dyne',
+            ownIt: true,
+            gameCount: 4,
+            release: '2'
+            ).save()
 
-        Game gameOne = gameService.save(new Game(
+        Hero captainAmerica = new Hero(
+            heroName: 'Captain America',
+            altereEgo: 'Steve Rogers',
+            ownIt: true,
+            gameCount: 5,
+            release: '1'
+        ).save()
+
+        Hero blackWidow = new Hero(
+            heroName: 'Black Widow',
+            alterEgo: 'Natasha Romanoff',
+            ownIt: true,
+            gameCount: 5,
+            release: '1'
+        ).save()
+
+        ModularSet bombScare = new ModularSet(encounterName: 'Bomb Scare', abbreviation: 'Bmb Scr').save()
+        ModularSet hydraPatrol = new ModularSet(encounterName: 'Hydra Patrol', abbreviation:'Hydr Ptrl').save()
+        ModularSet goblinGear = new ModularSet(encounterName: 'Goblin Gear', abbreviation: 'Gbln Gr').save()
+
+        Scenario rhino = new Scenario(scenarioName: 'Rhino').save()
+        Scenario taskmaster = new Scenario(scenarioName: 'Taskmaster').save()
+        Scenario redSkull = new Scenario(scenarioName: 'Red Skull').save()
+        Scenario mutagenFormula = new Scenario(scenarioName: 'Mutagen Formula').save()
+
+        Game gameOne = new Game(
             name: 'Game One',
             scenario: rhino,
             difficultyLevel: Game.DifficultyLevel.Standard,
@@ -29,7 +70,37 @@ class BootStrap {
             funRating: 3,
             difficultyRating: 4
 
-        ))
+        ).save()
+
+        Game gameTwo = new Game(
+            name: 'Game Two',
+            scenario: taskmaster,
+            difficultyLevel: Game.DifficultyLevel.Standard,
+            modularSet: hydraPatrol,
+            outcome: Game.Outcome.Win,
+            funRating: 3,
+            difficultyRating: 2
+            ).save()
+
+        Game gameThree = new Game(
+            name: 'Game Three',
+            scenario: redSkull,
+            difficultyLevel: Game.DifficultyLevel.Standard,
+            modularSet: hydraPatrol,
+            outcome: Game.Outcome.Lose,
+            funRating: 4,
+            difficultyRating: 3
+        ).save()
+
+        Game gameFour = new Game(
+            name: 'Game Four',
+            scenario: mutagenFormula,
+            difficultyLevel: Game.DifficultyLevel.Expert,
+            modularSet: goblinGear,
+            outcome: Game.Outcome.Win,
+            funRating: 5,
+            difficultyRating: 3
+        ).save()
     }
 
     def destroy = {

@@ -16,8 +16,38 @@
         </div>
         <div id="show-hero" class="content scaffold-show" role="main">
             <h1><g:message code="default.show.label" args="[entityName]" /></h1>
+
+                <ol class="property-list hero">
+    
+        <li class="fieldcontain">
+            <span id="heroName-label" class="property-label">Hero Name</span>
+            <div class="property-value" aria-labelledby="heroName-label">${hero.heroName}</div>
+        </li>
+    
+        <li class="fieldcontain">
+            <span id="alterEgo-label" class="property-label">Alter Ego</span>
+            <div class="property-value" aria-labelledby="alterEgo-label">${hero.alterEgo}</div>
+        </li>
+    
+        <li class="fieldcontain">
+            <span id="release-label" class="property-label">Release</span>
+            <div class="property-value" aria-labelledby="release-label">${hero.release}</div>
+        </li>
+    
+        <li class="fieldcontain">
+            <span id="gameCount-label" class="property-label">Game Count</span>
+            <div class="property-value" aria-labelledby="gameCount-label">${hero.heroGames.size()}</div>
+        </li>
         
-            <p>Game count: ${gameCount}</p>
+        <li class="fieldcontain">
+            <span id="heroGames-label" class="property-label">Hero Games</span>
+        </li>
+    
+        <li class="fieldcontain">
+            <span id="ownIt-label" class="property-label">Own It</span>
+            <div class="property-value" aria-labelledby="ownIt-label">${hero.ownIt}</div>
+        </li>
+            </ol>
             
             <g:if test="${flash.message}">
             <div class="message" role="status">${flash.message}</div>

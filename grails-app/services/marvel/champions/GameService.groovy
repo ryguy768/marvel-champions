@@ -1,7 +1,6 @@
 package marvel.champions
 
 import grails.gorm.services.Service
-import static marvel.champions.Game.Aspect
 import static marvel.champions.Game.DifficultyLevel
 import static marvel.champions.Game.Outcome
 

@@ -7,4 +7,6 @@ interface ScenarioService {
 
     Scenario save(String scenarioName)
 
+    Scenario save(Scenario scenario)
+
     }

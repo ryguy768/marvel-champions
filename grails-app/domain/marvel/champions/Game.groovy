@@ -3,7 +3,6 @@ package marvel.champions
 class Game {
 
     enum DifficultyLevel { Standard, Expert };
-    enum Aspect { Agression, Justice, Leadership, Protection }
     enum Outcome { Win, Lose }
 
     String name
@@ -35,13 +34,6 @@ class Game {
 
     String toString() {
         return name
-    }
-    def beforeInsert() {
-        dateCreated = new Date()
-    }
-
-    def beforeUpdate() {
-        lastUpdated = new Date()
     }
 
 }
