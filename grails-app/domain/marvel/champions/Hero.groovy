@@ -5,21 +5,24 @@ class Hero {
     String heroName
     String alterEgo
     boolean ownIt
-    int gameCount
-    String release
-    Long id
+    String release //TODO: change this to a domain object
 
-    static hasMany = [heroGames : HeroGame]
+    static hasMany = [heroGames: HeroGame]
 
     static constraints = {
-        heroName maxSize: 100
-        alterEgo maxSize: 100
-        release maxSize: 100
-        gameCount min: 0
+        heroName maxSize: 128, blank: false
+        alterEgo maxSize: 128, blank: false
+        release maxSize: 128, blank: false
     }
 
-    String toString () {
+    String toString() {
         return "$heroName ($alterEgo)"
+    }
+
+    Integer getAvgFunRating() {
+        if (!heroGames) return null
+        List<Integer> funRatings = heroGames*.game*.funRating
+        return funRatings.sum() / funRatings.size()
     }
 
 }

@@ -2,10 +2,15 @@ package marvel.champions
 
 class Game {
 
-    enum DifficultyLevel { Standard, Expert };
-    enum Outcome { Win, Lose }
+    enum DifficultyLevel {
+        Standard, Expert
+    }
 
-    String name
+    enum Outcome {
+        Win, Lose
+    }
+
+    String name // TODO: remove this field and calculate it from the other fields
     Scenario scenario
     DifficultyLevel difficultyLevel
     ModularSet modularSet
@@ -13,17 +18,13 @@ class Game {
     int funRating
     int difficultyRating
     // Date date // TODO lookup dateCreated and lastUpdated
-    // Date dateCreated
-    // Date lastUpdated //? find out why dateCreated and lastUpdated aren't working
+    Date dateCreated //TODO: add this 2 fields to every other domain object
+    Date lastUpdated
 
-    static hasMany = [heroGames : HeroGame]
+    static hasMany = [heroGames: HeroGame]
 
     static constraints = {
-        name maxSize: 100
-        scenario nullable: false
-        difficultyLevel nullable: false
-        modularSet nullable: false
-        outcome nullable: false
+        name maxSize: 128, blank: false
         funRating min: 0, max: 5
         difficultyRating min: 0, max: 5
     }

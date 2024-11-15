@@ -16,7 +16,6 @@ class BootStrap {
             heroName: 'Spider-Man',
             alterEgo: 'Peter Parker',
             ownIt: true,
-            gameCount: 5,
             release: '0'
             ).save()
 
@@ -24,7 +23,6 @@ class BootStrap {
           heroName: 'Iron-Man',
             alterEgo: 'Tony Stark',
             ownIt: true,
-            gameCount: 3,
             release: '0'
             ).save()
 
@@ -32,7 +30,6 @@ class BootStrap {
             heroName: 'Wasp',
             alterEgo: 'Nadia Van Dyne',
             ownIt: true,
-            gameCount: 4,
             release: '2'
             ).save()
 
@@ -40,7 +37,6 @@ class BootStrap {
             heroName: 'Captain America',
             altereEgo: 'Steve Rogers',
             ownIt: true,
-            gameCount: 5,
             release: '1'
         ).save()
 
@@ -48,7 +44,6 @@ class BootStrap {
             heroName: 'Black Widow',
             alterEgo: 'Natasha Romanoff',
             ownIt: true,
-            gameCount: 5,
             release: '1'
         ).save()
 

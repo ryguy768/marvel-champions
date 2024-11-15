@@ -19,7 +19,6 @@ class HeroServiceSpec extends Specification implements ServiceUnitTest<HeroServi
         hero.heroName == "Iron Man"
         hero.alterEgo == "Tony Stark"
         hero.ownIt == true
-        hero.gameCount == 2
         hero.release == "3"
     }
 }

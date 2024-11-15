@@ -6,9 +6,10 @@ class ModularSet {
     String abbreviation
 
     static constraints = {
-        encounterName maxSize: 100
-        abbreviation maxSize: 100
+        encounterName maxSize: 128, blank: false
+        abbreviation maxSize: 128, blank: false
     }
+
     String toString() {
         return "$encounterName ($abbreviation)"
     }

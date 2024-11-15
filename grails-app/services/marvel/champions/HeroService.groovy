@@ -1,7 +1,7 @@
 package marvel.champions
 
-import grails.gorm.transactions.Transactional
 import grails.gorm.services.Service
+import grails.gorm.transactions.Transactional
 
 @Transactional
 @Service(Hero)
@@ -12,19 +12,7 @@ abstract class HeroService {
 
     abstract Hero get(Long id)
 
-    abstract Hero save(String heroName, String alterEgo, boolean ownIt, int gameCount, String release)
-
-    def getAverageFunRatingForHero(Hero hero) {
-        List<HeroGame> heroGames = heroGameService.list().findAll { it.hero == hero }
-
-        List<Integer> funRatings = heroGames.collect { it.game.funRating }
-
-        if (funRatings) {
-            return funRatings.sum() / funRatings.size()
-        } else {
-            return ''
-        }
-    }
+    abstract Hero save(String heroName, String alterEgo, boolean ownIt, String release)
 
     def getAverageDifficultyRatingForHero(Hero hero) {
         List<HeroGame> heroGames = heroGameService.list().findAll { it.hero == hero }
