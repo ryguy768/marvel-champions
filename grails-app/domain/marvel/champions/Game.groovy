@@ -13,8 +13,8 @@ class Game {
     int funRating
     int difficultyRating
     // Date date // TODO lookup dateCreated and lastUpdated
-    Date dateCreated
-    Date lastUpdated
+    // Date dateCreated
+    // Date lastUpdated //? find out why dateCreated and lastUpdated aren't working
 
     static hasMany = [heroGames : HeroGame]
 

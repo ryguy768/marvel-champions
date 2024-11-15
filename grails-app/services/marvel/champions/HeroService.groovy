@@ -22,7 +22,7 @@ abstract class HeroService {
         if (funRatings) {
             return funRatings.sum() / funRatings.size()
         } else {
-            return 0.0
+            return ''
         }
     }
 
@@ -34,9 +34,10 @@ abstract class HeroService {
         if (difficultyRatings) {
             return difficultyRatings.sum() / difficultyRatings.size()
         } else {
-            return 0.0
+            return ''
         }
     }
+
     // abstract Hero save(Hero hero)
 
     // int countGames(Hero hero) {

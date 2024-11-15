@@ -42,6 +42,11 @@
         <li class="fieldcontain">
             <span id="heroGames-label" class="property-label">Hero Games</span>
         </li>
+
+        <%-- <li class="fieldcontain">
+            <span id="funRating-label" class="property-label">Average Fun Rating</span>
+            <div class="property-value" aria-labelledby="funRating-label">${}</div>
+        </li> --%>
     
         <li class="fieldcontain">
             <span id="ownIt-label" class="property-label">Own It</span>
