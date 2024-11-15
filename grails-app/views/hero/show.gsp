@@ -57,6 +57,13 @@
         </li>
 
         <li class="fieldcontain">
+            <span id="difficultyRating-label" class="property-label">Average Difficulty Rating</span>
+
+            <div class="property-value" aria-labelledby="difficultyRating-label">${hero.avgDifficultyRating}</div>
+        </li>
+       
+
+        <li class="fieldcontain">
             <span id="ownIt-label" class="property-label">Own It</span>
 
             <div class="property-value" aria-labelledby="ownIt-label">${hero.ownIt}</div>

@@ -4,6 +4,8 @@ class ModularSet {
 
     String encounterName
     String abbreviation
+    Date dateCreated
+    Date lastUpdated
 
     static constraints = {
         encounterName maxSize: 128, blank: false

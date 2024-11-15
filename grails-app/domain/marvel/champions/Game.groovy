@@ -3,11 +3,17 @@ package marvel.champions
 class Game {
 
     enum DifficultyLevel {
+
+
         Standard, Expert
+
     }
 
     enum Outcome {
+
+
         Win, Lose
+
     }
 
     String name // TODO: remove this field and calculate it from the other fields
@@ -18,7 +24,7 @@ class Game {
     int funRating
     int difficultyRating
     // Date date // TODO lookup dateCreated and lastUpdated
-    Date dateCreated //TODO: add this 2 fields to every other domain object
+    Date dateCreated
     Date lastUpdated
 
     static hasMany = [heroGames: HeroGame]

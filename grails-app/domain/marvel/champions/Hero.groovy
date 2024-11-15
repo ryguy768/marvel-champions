@@ -6,6 +6,8 @@ class Hero {
     String alterEgo
     boolean ownIt
     String release //TODO: change this to a domain object
+    Date dateCreated
+    Date lastUpdated
 
     static hasMany = [heroGames: HeroGame]
 
@@ -19,10 +21,16 @@ class Hero {
         return "$heroName ($alterEgo)"
     }
 
-    Integer getAvgFunRating() {
+    Double getAvgFunRating() {
         if (!heroGames) return null
         List<Integer> funRatings = heroGames*.game*.funRating
         return funRatings.sum() / funRatings.size()
+    }
+
+    Double getAvgDifficultyRating() {
+        if (!heroGames) return null
+        List<Integer> difficultyRatings = heroGames*.game*.difficultyRating
+        return difficultyRatings.sum() / difficultyRatings.size()
     }
 
 }

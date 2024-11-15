@@ -15,9 +15,7 @@ class HeroController {
 
         log.error " avg fun rating for ${hero.heroName} is ${hero.avgFunRating} "
 
-        def averageDifficultyRating = heroService.getAverageDifficultyRatingForHero(hero)
-        log.error " avg difficulty rating for ${hero.heroName} is ${averageDifficultyRating} "
+        log.error " avg difficulty rating for ${hero.heroName} is ${hero.avgDifficultyRating} "
     }
 
 }
-
