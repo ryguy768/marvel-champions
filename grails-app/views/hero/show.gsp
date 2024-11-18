@@ -48,6 +48,8 @@
 
         <li class="fieldcontain">
             <span id="heroGames-label" class="property-label">Hero Games</span>
+
+            <%-- <div class="property-value" aria-labelledby="heroGames-label"><a href="/heroGame/show/${gameService.id}">${hero}</a></div> --%>
         </li>
 
         <li class="fieldcontain">
@@ -67,6 +69,18 @@
             <span id="ownIt-label" class="property-label">Own It</span>
 
             <div class="property-value" aria-labelledby="ownIt-label">${hero.ownIt}</div>
+        </li>
+
+        <li class="fieldcontain">
+            <span id="dateCreated-label" class="property-label">Date Created</span>
+
+            <div class="property-value" aria-labelledby="dateCreated-label"><g:formatDate format="yyyy-MM-dd 'at' HH:mm:ss z" date="${hero.dateCreated}"/></div>
+        </li>
+
+        <li class="fieldcontain">
+            <span id="lastUpdated-label" class="property-label">Last Updated</span>
+
+            <div class="property-value" aria-labelledby="lastUpdated-label"><g:formatDate format="yyyy-MM-dd 'at' HH:mm:ss z" date="${hero.lastUpdated}"/></div>
         </li>
     </ol>
 

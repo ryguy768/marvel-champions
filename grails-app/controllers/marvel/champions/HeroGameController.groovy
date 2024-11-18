@@ -9,7 +9,7 @@ class HeroGameController {
 
     HeroGameService heroGameService
 
-    static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
+    static allowedMethods = [save: 'POST', update: 'PUT', delete: 'DELETE']
 
     def index(Integer max) {
         params.max = Math.min(max ?: 10, 100)
@@ -68,7 +68,7 @@ class HeroGameController {
                 flash.message = message(code: 'default.updated.message', args: [message(code: 'heroGame.label', default: 'HeroGame'), heroGame.id])
                 redirect heroGame
             }
-            '*'{ respond heroGame, [status: OK] }
+            '*' { respond heroGame, [status: OK] }
         }
     }
 
@@ -83,9 +83,9 @@ class HeroGameController {
         request.withFormat {
             form multipartForm {
                 flash.message = message(code: 'default.deleted.message', args: [message(code: 'heroGame.label', default: 'HeroGame'), id])
-                redirect action:"index", method:"GET"
+                redirect action:'index', method:'GET'
             }
-            '*'{ render status: NO_CONTENT }
+            '*' { render status: NO_CONTENT }
         }
     }
 
@@ -93,9 +93,10 @@ class HeroGameController {
         request.withFormat {
             form multipartForm {
                 flash.message = message(code: 'default.not.found.message', args: [message(code: 'heroGame.label', default: 'HeroGame'), params.id])
-                redirect action: "index", method: "GET"
+                redirect action: 'index', method: 'GET'
             }
-            '*'{ render status: NOT_FOUND }
+            '*' { render status: NOT_FOUND }
         }
     }
+
 }

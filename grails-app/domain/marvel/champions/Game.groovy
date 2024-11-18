@@ -4,13 +4,11 @@ class Game {
 
     enum DifficultyLevel {
 
-
         Standard, Expert
 
     }
 
     enum Outcome {
-
 
         Win, Lose
 
@@ -23,7 +21,6 @@ class Game {
     Outcome outcome
     int funRating
     int difficultyRating
-    // Date date // TODO lookup dateCreated and lastUpdated
     Date dateCreated
     Date lastUpdated
 
