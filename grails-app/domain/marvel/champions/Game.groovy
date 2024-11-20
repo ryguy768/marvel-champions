@@ -30,7 +30,9 @@ class Game {
         name maxSize: 128, blank: false
         funRating min: 0, max: 5
         difficultyRating min: 0, max: 5
+
     }
+
 
     // String getName() {
     //     return "$scenario"

@@ -7,13 +7,15 @@
 </head>
 
 <body>
-<a href="#show-hero" class="skip" tabindex="-1"><g:message code="default.link.skip.label" default="Skip to content&hellip;"/></a>
+<a href="#show-hero" class="skip" tabindex="-1"><g:message code="default.link.skip.label"
+                                                           default="Skip to content&hellip;"/></a>
 
 <div class="nav" role="navigation">
     <ul>
         <li><a class="home" href="${createLink(uri: '/')}"><g:message code="default.home.label"/></a></li>
         <li><g:link class="list" action="index"><g:message code="default.list.label" args="[entityName]"/></g:link></li>
-        <li><g:link class="create" action="create"><g:message code="default.new.label" args="[entityName]"/></g:link></li>
+        <li><g:link class="create" action="create"><g:message code="default.new.label"
+                                                              args="[entityName]"/></g:link></li>
     </ul>
 </div>
 
@@ -49,7 +51,11 @@
         <li class="fieldcontain">
             <span id="heroGames-label" class="property-label">Hero Games</span>
 
-            <%-- <div class="property-value" aria-labelledby="heroGames-label"><a href="/heroGame/show/${gameService.id}">${hero}</a></div> --%>
+            <div class="property-value" aria-labelledby="heroGames-label">
+                <g:each in="${hero?.heroGames}" var="heroGame">
+                    <a href="/game/show/${heroGame.game.id}">${heroGame.game}</a> <br/>
+                </g:each>
+            </div>
         </li>
 
         <li class="fieldcontain">
@@ -63,7 +69,7 @@
 
             <div class="property-value" aria-labelledby="difficultyRating-label">${hero.avgDifficultyRating}</div>
         </li>
-       
+
 
         <li class="fieldcontain">
             <span id="ownIt-label" class="property-label">Own It</span>
@@ -74,13 +80,15 @@
         <li class="fieldcontain">
             <span id="dateCreated-label" class="property-label">Date Created</span>
 
-            <div class="property-value" aria-labelledby="dateCreated-label"><g:formatDate format="yyyy-MM-dd 'at' HH:mm:ss z" date="${hero.dateCreated}"/></div>
+            <div class="property-value" aria-labelledby="dateCreated-label"><g:formatDate
+                    format="yyyy-MM-dd 'at' HH:mm:ss z" date="${hero.dateCreated}"/></div>
         </li>
 
         <li class="fieldcontain">
             <span id="lastUpdated-label" class="property-label">Last Updated</span>
 
-            <div class="property-value" aria-labelledby="lastUpdated-label"><g:formatDate format="yyyy-MM-dd 'at' HH:mm:ss z" date="${hero.lastUpdated}"/></div>
+            <div class="property-value" aria-labelledby="lastUpdated-label"><g:formatDate
+                    format="yyyy-MM-dd 'at' HH:mm:ss z" date="${hero.lastUpdated}"/></div>
         </li>
     </ol>
 
@@ -90,8 +98,10 @@
 
     <g:form resource="${this.hero}" method="DELETE">
         <fieldset class="buttons">
-            <g:link class="edit" action="edit" resource="${this.hero}"><g:message code="default.button.edit.label" default="Edit"/></g:link>
-            <input class="delete" type="submit" value="${message(code: 'default.button.delete.label', default: 'Delete')}"
+            <g:link class="edit" action="edit" resource="${this.hero}"><g:message code="default.button.edit.label"
+                                                                                  default="Edit"/></g:link>
+            <input class="delete" type="submit"
+                   value="${message(code: 'default.button.delete.label', default: 'Delete')}"
                    onclick="return confirm('${message(code: 'default.button.delete.confirm.message', default: 'Are you sure?')}');"/>
         </fieldset>
     </g:form>
