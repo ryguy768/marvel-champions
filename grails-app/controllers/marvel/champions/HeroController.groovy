@@ -4,6 +4,7 @@ class HeroController {
 
     HeroService heroService
 
+    static scaffold = Hero
 
     def show(Long id) {
         Hero hero = heroService.get(id)

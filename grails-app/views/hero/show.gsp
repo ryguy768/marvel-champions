@@ -49,16 +49,6 @@
         </li>
 
         <li class="fieldcontain">
-            <span id="heroGames-label" class="property-label">Hero Games</span>
-
-            <div class="property-value" aria-labelledby="heroGames-label">
-                <g:each in="${hero?.heroGames}" var="heroGame">
-                    <a href="/game/show/${heroGame.game.id}">${heroGame.game}</a> <br/>
-                </g:each>
-            </div>
-        </li>
-
-        <li class="fieldcontain">
             <span id="funRating-label" class="property-label">Average Fun Rating</span>
 
             <div class="property-value" aria-labelledby="funRating-label">${hero.avgFunRating}</div>
@@ -75,6 +65,16 @@
             <span id="ownIt-label" class="property-label">Own It</span>
 
             <div class="property-value" aria-labelledby="ownIt-label">${hero.ownIt}</div>
+        </li>
+
+        <li class="fieldcontain">
+            <span id="heroGames-label" class="property-label">Games</span>
+
+            <div class="property-value" aria-labelledby="heroGames-label">
+                <g:each in="${hero?.heroGames}" var="heroGame">
+                    <a href="/game/show/${heroGame.game.id}">${heroGame.game}</a> <br/>
+                </g:each>
+            </div>
         </li>
 
         <li class="fieldcontain">

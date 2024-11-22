@@ -16,7 +16,7 @@ abstract class GameService {
 
     abstract void delete(Serializable id)
 
-    abstract Game save(String name, Scenario scenario, DifficultyLevel difficultyLevel, ModularSet modularSet, Outcome outcome, int funRating, int difficultyRating)
+    abstract Game save(Scenario scenario, DifficultyLevel difficultyLevel, ModularSet modularSet, Outcome outcome, int funRating, int difficultyRating)
 
     abstract Game save(Game game)
 

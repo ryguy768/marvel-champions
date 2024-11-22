@@ -38,12 +38,12 @@
     </h1>
     <ol class="property-list game">
         <li class="fieldcontain">
-            <span id="name-label" class="property-label">Game Name</span>
+            <span id="gameName-label" class="property-label">Game Name</span>
 
-            <div class="property-value" aria-labelledby="name-label">${game.name}</div>
+            <div class="property-value" aria-labelledby="name-label">${game.toString()}</div>
         </li>
         <li class="fieldcontain">
-            <span id="heroGames-label" class="property-label">Hero Games</span>
+            <span id="heroGames-label" class="property-label">Heroes</span>
 
             <div class="property-value" aria-labelledby="heroGames-label">
                 <g:each in="${game?.heroGames}" var="heroGame">

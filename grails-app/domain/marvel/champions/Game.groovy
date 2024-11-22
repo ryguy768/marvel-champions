@@ -14,7 +14,7 @@ class Game {
 
     }
 
-    String name // TODO: remove this field and calculate it from the other fields
+//    String name // TODO: remove this field and calculate it from the other fields
     Scenario scenario
     DifficultyLevel difficultyLevel
     ModularSet modularSet
@@ -24,22 +24,20 @@ class Game {
     Date dateCreated
     Date lastUpdated
 
+
     static hasMany = [heroGames: HeroGame]
 
     static constraints = {
-        name maxSize: 128, blank: false
         funRating min: 0, max: 5
         difficultyRating min: 0, max: 5
 
     }
 
 
-    // String getName() {
-    //     return "$scenario"
-    // }
-
     String toString() {
-        return name
+        def heroNames = heroGames*.hero*.heroName.join(", ")
+        return "${heroNames} vs ${scenario}"
     }
+
 
 }
