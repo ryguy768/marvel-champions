@@ -40,7 +40,10 @@
         <li class="fieldcontain">
             <span id="gameName-label" class="property-label">Game Name</span>
 
-            <div class="property-value" aria-labelledby="name-label">${game.toString()}</div>
+            <div class="property-value" aria-labelledby="name-label">
+                <a href="/game/show/${game.id}">${game.toString()}</a>
+            </div>
+
         </li>
         <li class="fieldcontain">
             <span id="heroGames-label" class="property-label">Heroes</span>
