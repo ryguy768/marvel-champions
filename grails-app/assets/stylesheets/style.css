@@ -1,7 +1,7 @@
-#show-game>ol.game {
+#show-game > ol.game {
     color: aqua;
 }
 
-#show-hero>span#gameCount-label.property-label {
+#show-hero > span#gameCount-label.property-label {
     color: aqua;
 }

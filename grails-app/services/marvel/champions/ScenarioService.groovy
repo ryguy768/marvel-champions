@@ -9,4 +9,6 @@ interface ScenarioService {
 
     Scenario save(Scenario scenario)
 
-    }
+    List<Scenario> list()
+
+}

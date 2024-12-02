@@ -9,5 +9,7 @@ interface ModularSetService {
 
     ModularSet save(ModularSet modularSet)
 
+    List<ModularSet> list()
+
 }
 

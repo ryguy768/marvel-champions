@@ -5,7 +5,7 @@ class Hero {
     String heroName
     String alterEgo
     boolean ownIt
-    String release //TODO: change this to a domain object
+    String release // TODO: change this to a domain object
     Date dateCreated
     Date lastUpdated
 
@@ -19,6 +19,8 @@ class Hero {
 
     String toString() {
         return "$heroName ($alterEgo)"
+
+
     }
 
     Double getAvgFunRating() {
