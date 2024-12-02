@@ -32,13 +32,47 @@
         </ul>
     </g:hasErrors>
     <g:form resource="${this.game}" method="POST">
-    %{-- //TODO finish creating views      --}%
-        <div class="fieldcontain required">
-            <label for="gameName">Game Name<span class="required-indicator">*</span></label>
-            <input type="text" name="gameName" required="" id="gameName"/>
-        </div>
         <fieldset class="form">
-            <f:all bean="game"/>
+
+            <div class="fieldcontain required">
+                <label for="scenario">Scenario<span class="required-indicator">*</span></label>
+                <g:select name="scenario.id" from="${scenarios}" optionKey="id" optionValue="scenarioName" required=""
+                          id="scenario"/>
+            </div>
+
+            <div class="fieldcontain required">
+                <label for="difficultyLevel">Difficulty Level<span class="required-indicator">*</span></label>
+                <select name="difficultyLevel" id="difficultyLevel">
+                    <option value="Standard">Standard</option>
+                    <option value="Expert">Expert</option>
+                </select>
+            </div>
+
+            <div class="fieldcontain required">
+                <label for="modularSet">Modular Set<span class="required-indicator">*</span></label>
+                <g:select name="modularSet.id" from="${modularSets}" optionKey="id" optionValue="encounterName"
+                          required=""
+                          id="modularSet"/>
+            </div>
+
+            <div class="fieldcontain required">
+                <label for="outcome">Outcome<span class="required-indicator">*</span></label>
+                <select name="outcome" id="outcome">
+                    <option value="Win">Win</option>
+                    <option value="Lose">Lose</option>
+                </select>
+            </div>
+
+            <div class="fieldcontain required">
+                <label for="funRating">Fun Rating<span class="required-indicator">*</span></label>
+                <input type="number" name="funRating" min="0" max="5" required="" id="funRating"/>
+            </div>
+
+            <div class="fieldcontain required">
+                <label for="difficultyRating">Difficulty Rating<span class="required-indicator">*</span></label>
+                <input type="number" name="difficultyRating" min="0" max="5" required="" id="difficultyRating"/>
+            </div>
+            %{--            <f:all bean="game"/>--}%
         </fieldset>
         <fieldset class="buttons">
             <g:submitButton name="create" class="save"
