@@ -2,6 +2,10 @@ package marvel.champions
 
 import grails.testing.web.controllers.ControllerUnitTest
 import spock.lang.Specification
+import spock.lang.Ignore
+
+@Ignore
+
 
 class ModularSetControllerSpec extends Specification implements ControllerUnitTest<ModularSetController> {
 
@@ -12,7 +16,7 @@ class ModularSetControllerSpec extends Specification implements ControllerUnitTe
     }
 
     void "test something"() {
-        expect:"fix me"
-            true == false
+        expect: "fix me"
+        true == false
     }
 }

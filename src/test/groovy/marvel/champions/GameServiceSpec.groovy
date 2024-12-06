@@ -2,8 +2,12 @@ package marvel.champions
 
 import grails.testing.services.ServiceUnitTest
 import spock.lang.Specification
+import spock.lang.Ignore
 
-class GameServiceSpec extends Specification implements ServiceUnitTest<GameService>{
+@Ignore
+
+
+class GameServiceSpec extends Specification implements ServiceUnitTest<GameService> {
 
     def setup() {
     }
@@ -12,7 +16,7 @@ class GameServiceSpec extends Specification implements ServiceUnitTest<GameServi
     }
 
     void "test something"() {
-        expect:"fix me"
-            true == false
+        expect: "fix me"
+        true == false
     }
 }

@@ -2,8 +2,12 @@ package marvel.champions
 
 import grails.testing.services.ServiceUnitTest
 import spock.lang.Specification
+import spock.lang.Ignore
 
-class ModularsetServiceSpec extends Specification implements ServiceUnitTest<ModularsetService>{
+@Ignore
+
+
+class ModularSetServiceSpec extends Specification implements ServiceUnitTest<ModularSetService> {
 
     def setup() {
     }
@@ -12,7 +16,7 @@ class ModularsetServiceSpec extends Specification implements ServiceUnitTest<Mod
     }
 
     void "test something"() {
-        expect:"fix me"
-            true == false
+        expect: "fix me"
+        true == false
     }
 }
