@@ -1,10 +1,9 @@
 /* groovylint-disable NglParseError, UnusedVariable */
 package marvel.champions
 
-
-import groovy.transform.CompileStatic
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder
 import marvel.champions.*
+import groovy.transform.CompileStatic
+
 
 @CompileStatic
 class BootStrap {
@@ -16,27 +15,14 @@ class BootStrap {
     ScenarioService scenarioService
 
     def init = { servletContext ->
-        def adminRole
-        Role.withTransaction { rl ->
-            adminRole = new Role(authority: 'ROLE_ADMIN').save(flush: true)
-        }
+        def adminRole = new Role(authority: 'ROLE_ADMIN').save()
+        def userRole = new Role(authority: 'ROLE_USER').save()
 
-        def testUser
-        User.withTransaction { us ->
-            testUser = new User(
-                    username: 'Riley',
-                    password: new BCryptPasswordEncoder().encode('123456'),
-            ).save(flush: true)
-        }
+        def adminUser = new User(username: 'admin', password: 'admin').save()
+        def guestUser = new User(username: 'guest', password: 'guest').save()
 
-        UserRole.create(testUser, adminRole)
-
-        UserRole.withTransaction { urole ->
-            UserRole.withSession { session ->
-                session.flush()
-                session.clear()
-            }
-        }
+        UserRole.create(adminUser, adminRole)
+        UserRole.create(guestUser, userRole)
 
 
         Hero spiderMan = new Hero(

@@ -10,9 +10,9 @@ abstract class GameService {
 
     abstract Game get(Serializable id)
 
-    abstract List<Game> list(Map args)
+    abstract List<Game> findAllByUser(User user, Map params)
 
-    abstract Long count()
+    abstract Long countByUser(User user)
 
     abstract void delete(Serializable id)
 
