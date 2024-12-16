@@ -58,8 +58,6 @@ dependencies {
     implementation "org.grails.plugins:events"
     implementation "org.grails.plugins:gsp"
     implementation "org.grails.plugins:spring-security-core:4.0.3"
-    implementation "org.grails.plugins:spring-security-ui:4.0.0-RC1"
-    implementation "org.grails.plugins:mail:3.0.0"
     implementation "javax.transaction:jta:1.1"
     profile "org.grails.profiles:web"
     runtimeOnly "org.glassfish.web:el-impl:2.2.1-b05"

@@ -1,9 +1,10 @@
 /* groovylint-disable NglParseError, UnusedVariable */
 package marvel.champions
 
-import marvel.champions.*
-import groovy.transform.CompileStatic
 
+import groovy.transform.CompileStatic
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder
+import marvel.champions.*
 
 @CompileStatic
 class BootStrap {
@@ -15,6 +16,7 @@ class BootStrap {
     ScenarioService scenarioService
 
     def init = { servletContext ->
+
         def adminRole = new Role(authority: 'ROLE_ADMIN').save()
         def userRole = new Role(authority: 'ROLE_USER').save()
 

@@ -1,34 +1,23 @@
 package marvel.champions
 
-import grails.plugin.springsecurity.annotation.Secured
 import grails.validation.ValidationException
 import static org.springframework.http.HttpStatus.*
 
-
-@Secured(['ROLE_USER, ROLE_ADMIN'])
 class GameController {
 
     GameService gameService
     ScenarioService scenarioService
     ModularSetService modularSetService
-    def springSecurityService
 
     static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
 
     def index(Integer max) {
-        def user = springSecurityService.currentUser
-        log.debug("Current user: ${user.username}, Roles: ${user.authorities*.authority}")
-        def games = user.authorities.any { it.authority == 'ROLE_ADMIN' } ? Game.list() : Game.findAllByUser(user)
-        respond games
+        params.max = Math.min(max ?: 10, 100)
+        respond gameService.list(params), model: [gameCount: gameService.count()]
     }
 
     def show(Long id) {
-        def game = gameService.get(id)
-        if (game?.user?.id != springSecurityService.currentUser.id) {
-            notFound()
-            return
-        }
-        respond game
+        respond gameService.get(id)
     }
 
 
@@ -44,8 +33,6 @@ class GameController {
             notFound()
             return
         }
-
-        game.user = springSecurityService.currentUser
 
         try {
             gameService.save(game)
@@ -64,23 +51,11 @@ class GameController {
     }
 
     def edit(Long id) {
-        def game = gameService.get(id)
-        def user = springSecurityService.currentUser
-        if (game.user != user && !user.authorities.any { it.authority == 'ROLE_ADMIN' }) {
-            notFound()
-            return
-        }
-        respond game
+        respond gameService.get(id)
     }
 
     def update(Game game) {
         if (game == null) {
-            notFound()
-            return
-        }
-
-        def user = springSecurityService.currentUser
-        if (game.user != user && !user.authorities.any { it.authority == 'ROLE_ADMIN' }) {
             notFound()
             return
         }
@@ -102,19 +77,10 @@ class GameController {
     }
 
     def delete(Long id) {
-
         if (id == null) {
             notFound()
             return
         }
-
-        def game = gameService.get(id)
-        def user = springSecurityService.currentUser
-        if (game.user != user && !user.authorities.any { it.authority == 'ROLE_ADMIN' }) {
-            notFound()
-            return
-        }
-
 
         gameService.delete(id)
 
