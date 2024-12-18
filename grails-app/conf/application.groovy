@@ -1,4 +1,6 @@
 // Added by the Spring Security Core plugin:
+grails.plugin.springsecurity.logout.postOnly = false
+
 grails.plugin.springsecurity.userLookup.userDomainClassName = 'marvel.champions.User'
 grails.plugin.springsecurity.userLookup.authorityJoinClassName = 'marvel.champions.UserRole'
 grails.plugin.springsecurity.authority.className = 'marvel.champions.Role'
