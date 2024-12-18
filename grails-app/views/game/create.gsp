@@ -35,6 +35,11 @@
         <fieldset class="form">
 
             <div class="fieldcontain required">
+                <label for="scenario">Heroes<span class="required-indicator">*</span></label>
+                <g:link controller="heroGame" action="create">Add Hero</g:link>
+            </div>
+
+            <div class="fieldcontain required">
                 <label for="scenario">Scenario<span class="required-indicator">*</span></label>
                 <g:select name="scenario.id" from="${scenarios}" optionKey="id" optionValue="scenarioName" required=""
                           id="scenario"/>

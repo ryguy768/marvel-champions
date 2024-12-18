@@ -2,33 +2,42 @@ package marvel.champions
 
 import grails.validation.ValidationException
 import static org.springframework.http.HttpStatus.*
+import grails.plugin.springsecurity.annotation.Secured
+import grails.plugin.springsecurity.SpringSecurityService
 
 class GameController {
 
     GameService gameService
     ScenarioService scenarioService
     ModularSetService modularSetService
+    SpringSecurityService springSecurityService
 
     static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
 
+    @Secured(['ROLE_ADMIN', 'ROLE_USER'])
     def index(Integer max) {
         params.max = Math.min(max ?: 10, 100)
-        respond gameService.list(params), model: [gameCount: gameService.count()]
+        def currentUser = springSecurityService.currentUser
+        def games = gameService.list(params).findAll { it.user == currentUser }
+        respond games, model: [gameCount: games.size()]
     }
 
+    @Secured(['ROLE_ADMIN', 'ROLE_USER'])
     def show(Long id) {
         respond gameService.get(id)
     }
 
-
+    @Secured(['ROLE_ADMIN', 'ROLE_USER'])
     def create() {
         def scenarios = scenarioService.list()
         def modularSets = modularSetService.list()
         respond new Game(params), model: [scenarios: scenarios, modularSets: modularSets]
     }
 
-
+    @Secured(['ROLE_ADMIN', 'ROLE_USER'])
     def save(Game game) {
+        def currentUser = springSecurityService.currentUser
+        game.user = currentUser
         if (game == null) {
             notFound()
             return
@@ -50,10 +59,12 @@ class GameController {
         }
     }
 
+    @Secured(['ROLE_ADMIN', 'ROLE_USER'])
     def edit(Long id) {
         respond gameService.get(id)
     }
 
+    @Secured(['ROLE_ADMIN', 'ROLE_USER'])
     def update(Game game) {
         if (game == null) {
             notFound()
@@ -76,6 +87,7 @@ class GameController {
         }
     }
 
+    @Secured(['ROLE_ADMIN', 'ROLE_USER'])
     def delete(Long id) {
         if (id == null) {
             notFound()

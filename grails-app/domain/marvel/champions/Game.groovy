@@ -14,7 +14,7 @@ class Game {
 
     }
 
-//    String gameName // TODO: remove this field and calculate it from the other fields
+
     Scenario scenario
     DifficultyLevel difficultyLevel
     ModularSet modularSet
@@ -23,6 +23,9 @@ class Game {
     int difficultyRating
     Date dateCreated
     Date lastUpdated
+    User user
+
+    static belongsTo = [user: User]
 
 
     static hasMany = [heroGames: HeroGame]

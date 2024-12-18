@@ -7,7 +7,7 @@ interface HeroGameService {
 
     HeroGame get(Serializable id)
 
-    List<HeroGame> list(Map args)
+    abstract List<Game> findAllByUser(User user, Map params)
 
     Long count()
 
