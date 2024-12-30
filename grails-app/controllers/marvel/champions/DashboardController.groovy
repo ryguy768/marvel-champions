@@ -10,6 +10,10 @@ class DashboardController {
 
     def index() {
         def user = springSecurityService.currentUser
-        [username: user.username]
+        if (user) {
+            [username: user.username]
+        } else {
+            redirect(controller: 'login', action: 'auth')
+        }
     }
 }

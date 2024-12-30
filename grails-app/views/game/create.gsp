@@ -35,7 +35,7 @@
         <fieldset class="form">
 
             <div class="fieldcontain required">
-                <label for="scenario">Heroes<span class="required-indicator">*</span></label>
+                <label for="scenario">Heroes</label>
                 <g:link controller="heroGame" action="create">Add Hero</g:link>
             </div>
 
