@@ -7,7 +7,7 @@ interface HeroGameService {
 
     HeroGame get(Serializable id)
 
-    abstract List<Game> findAllByUser(User user, Map params)
+    List<HeroGame> listGamesByUser(User user)
 
     Long count()
 
@@ -16,5 +16,6 @@ interface HeroGameService {
     HeroGame save(Game game, Hero hero, HeroGame.Aspect aspect)
 
     HeroGame save(HeroGame heroGame)
+
 
 }

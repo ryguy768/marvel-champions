@@ -35,11 +35,6 @@
         <fieldset class="form">
 
             <div class="fieldcontain required">
-                <label for="scenario">Heroes</label>
-                <g:link controller="heroGame" action="create">Add Hero</g:link>
-            </div>
-
-            <div class="fieldcontain required">
                 <label for="scenario">Scenario<span class="required-indicator">*</span></label>
                 <g:select name="scenario.id" from="${scenarios}" optionKey="id" optionValue="scenarioName" required=""
                           id="scenario"/>
@@ -76,6 +71,11 @@
             <div class="fieldcontain required">
                 <label for="difficultyRating">Difficulty Rating<span class="required-indicator">*</span></label>
                 <input type="number" name="difficultyRating" min="0" max="5" required="" id="difficultyRating"/>
+            </div>
+
+            <div class="fieldcontain required">
+                <label for="scenario">Heroes</label>
+                <g:link controller="heroGame" action="create">Add Hero</g:link>
             </div>
             %{--            <f:all bean="game"/>--}%
         </fieldset>

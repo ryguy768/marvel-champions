@@ -27,7 +27,7 @@ class BootStrap {
         UserRole.create(guestUser, userRole)
 
 
-        if (!Hero.findByHeroName('Spider-Man')) {
+        if (!Hero.where { heroName == 'Spider-Man' }.find()) {
             new Hero(
                     heroName: 'Spider-Man',
                     alterEgo: 'Peter Parker',
@@ -36,7 +36,7 @@ class BootStrap {
             ).save()
         }
 
-        if (!Hero.findByHeroName('Iron-Man')) {
+        if (!Hero.where { heroName == 'Iron-Man' }.find()) {
             new Hero(
                     heroName: 'Iron-Man',
                     alterEgo: 'Tony Stark',
@@ -45,7 +45,7 @@ class BootStrap {
             ).save()
         }
 
-        if (!Hero.findByHeroName('Wasp')) {
+        if (!Hero.where { heroName == 'Wasp' }.find()) {
             new Hero(
                     heroName: 'Wasp',
                     alterEgo: 'Nadia Van Dyne',
@@ -54,7 +54,7 @@ class BootStrap {
             ).save()
         }
 
-        if (!Hero.findByHeroName('Captain America')) {
+        if (!Hero.where { heroName == 'Captain America' }.find()) {
             new Hero(
                     heroName: 'Captain America',
                     alterEgo: 'Steve Rogers',
@@ -63,7 +63,7 @@ class BootStrap {
             ).save()
         }
 
-        if (!Hero.findByHeroName('Black Widow')) {
+        if (!Hero.where { heroName == 'Black Widow' }.find()) {
             new Hero(
                     heroName: 'Black Widow',
                     alterEgo: 'Natasha Romanoff',
@@ -72,26 +72,26 @@ class BootStrap {
             ).save()
         }
 
-        if (!ModularSet.findByEncounterName('Bomb Scare')) {
+        if (!ModularSet.where { encounterName == 'Bomb Scare' }.find()) {
             new ModularSet(encounterName: 'Bomb Scare', abbreviation: 'Bmb Scr').save()
         }
-        if (!ModularSet.findByEncounterName('Hydra Patrol')) {
+        if (!ModularSet.where { encounterName == 'Hydra Patrol' }.find()) {
             new ModularSet(encounterName: 'Hydra Patrol', abbreviation: 'Hydr Ptrl').save()
         }
-        if (!ModularSet.findByEncounterName('Goblin Gear')) {
+        if (!ModularSet.where { encounterName == 'Goblin Gear' }.find()) {
             new ModularSet(encounterName: 'Goblin Gear', abbreviation: 'Gbln Gr').save()
         }
 
-        if (!Scenario.findByScenarioName('Rhino')) {
+        if (!Scenario.where { scenarioName == 'Rhino' }.find()) {
             new Scenario(scenarioName: 'Rhino').save()
         }
-        if (!Scenario.findByScenarioName('Taskmaster')) {
+        if (!Scenario.where { scenarioName == 'Taskmaster' }.find()) {
             new Scenario(scenarioName: 'Taskmaster').save()
         }
-        if (!Scenario.findByScenarioName('Red Skull')) {
+        if (!Scenario.where { scenarioName == 'Red Skull' }.find()) {
             new Scenario(scenarioName: 'Red Skull').save()
         }
-        if (!Scenario.findByScenarioName('Mutagen Formula')) {
+        if (!Scenario.where { scenarioName == 'Mutagen Formula' }.find()) {
             new Scenario(scenarioName: 'Mutagen Formula').save()
         }
 

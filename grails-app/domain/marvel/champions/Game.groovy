@@ -38,7 +38,7 @@ class Game {
 
 //    @Override
     String toString() {
-        def heroNames = heroGames?.hero?.heroName?.join(", ")
+        def heroNames = heroGames*.hero?.heroName?.join(", ")
         return "${heroNames} vs ${scenario}"
     }
 
