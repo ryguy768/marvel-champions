@@ -19,8 +19,6 @@ class Hero {
 
     String toString() {
         return "$heroName ($alterEgo)"
-
-
     }
 
     Double getAvgFunRating() {

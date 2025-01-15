@@ -1,14 +1,10 @@
 /* groovylint-disable NglParseError, UnusedVariable */
 package marvel.champions
 
-
 import groovy.transform.CompileStatic
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder
-import marvel.champions.*
 
 @CompileStatic
 class BootStrap {
-
 
     GameService gameService
     HeroService heroService
@@ -17,8 +13,8 @@ class BootStrap {
 
     def init = { servletContext ->
 
-        def adminRole = new Role(authority: 'ROLE_ADMIN').save()
-        def userRole = new Role(authority: 'ROLE_USER').save()
+        def adminRole = new Role(authority: Role.ADMIN).save()
+        def userRole = new Role(authority: Role.USER).save()
 
         def adminUser = new User(username: 'admin', password: 'admin').save()
         def guestUser = new User(username: 'guest', password: 'guest').save()
@@ -29,46 +25,46 @@ class BootStrap {
 
         if (!Hero.where { heroName == 'Spider-Man' }.find()) {
             new Hero(
-                    heroName: 'Spider-Man',
-                    alterEgo: 'Peter Parker',
-                    ownIt: true,
-                    release: '0'
+                heroName: 'Spider-Man',
+                alterEgo: 'Peter Parker',
+                ownIt: true,
+                release: '0'
             ).save()
         }
 
         if (!Hero.where { heroName == 'Iron-Man' }.find()) {
             new Hero(
-                    heroName: 'Iron-Man',
-                    alterEgo: 'Tony Stark',
-                    ownIt: true,
-                    release: '0'
+                heroName: 'Iron-Man',
+                alterEgo: 'Tony Stark',
+                ownIt: true,
+                release: '0'
             ).save()
         }
 
         if (!Hero.where { heroName == 'Wasp' }.find()) {
             new Hero(
-                    heroName: 'Wasp',
-                    alterEgo: 'Nadia Van Dyne',
-                    ownIt: true,
-                    release: '2'
+                heroName: 'Wasp',
+                alterEgo: 'Nadia Van Dyne',
+                ownIt: true,
+                release: '2'
             ).save()
         }
 
         if (!Hero.where { heroName == 'Captain America' }.find()) {
             new Hero(
-                    heroName: 'Captain America',
-                    alterEgo: 'Steve Rogers',
-                    ownIt: true,
-                    release: '1'
+                heroName: 'Captain America',
+                alterEgo: 'Steve Rogers',
+                ownIt: true,
+                release: '1'
             ).save()
         }
 
         if (!Hero.where { heroName == 'Black Widow' }.find()) {
             new Hero(
-                    heroName: 'Black Widow',
-                    alterEgo: 'Natasha Romanoff',
-                    ownIt: true,
-                    release: '1'
+                heroName: 'Black Widow',
+                alterEgo: 'Natasha Romanoff',
+                ownIt: true,
+                release: '1'
             ).save()
         }
 

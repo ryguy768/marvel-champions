@@ -1,21 +1,27 @@
 package marvel.champions
 
-import grails.validation.ValidationException
 import grails.gorm.transactions.Transactional
 import grails.plugin.springsecurity.annotation.Secured
-import marvel.champions.User
-import marvel.champions.Role
-import marvel.champions.UserRole
+import grails.validation.ValidationException
 
 @Transactional
 @Secured('permitAll')
 class RegisterController {
+
+    RoleService roleService
+    UserService userService
 
     static allowedMethods = [register: "POST"]
 
     def index() {}
 
     def register() {
+        User user = userService.create(params.username, params.password, params.repassword)
+        flash.message = "You have registered successfully. Please login."
+        render view: "index"
+    }
+
+    def registerOld() {
         if (!params.password.equals(params.repassword)) {
             flash.message = "Password and Re-Password not match"
             redirect action: "index"
@@ -45,5 +51,15 @@ class RegisterController {
                 return
             }
         }
+    }
+
+    /**
+     * Exception handler for class Exception
+     */
+
+    def handleException(Exception e) {
+        log.error("An error occurred: ${e.message}", e)
+        flash.message = e.message
+        redirect action: "index"
     }
 }

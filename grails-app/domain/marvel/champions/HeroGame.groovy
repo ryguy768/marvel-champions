@@ -3,18 +3,15 @@ package marvel.champions
 class HeroGame {
 
     enum Aspect {
-
-
         Aggression, Justice, Leadership, Protection
-
     }
 
+    User user
     Hero hero
     Game game
     Aspect aspect
     Date dateCreated
     Date lastUpdated
-    User user
 
     static belongsTo = [user: User, game: Game]
 
