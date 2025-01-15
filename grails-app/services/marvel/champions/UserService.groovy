@@ -12,6 +12,8 @@ abstract class UserService {
 
     abstract User get(Long id)
 
+    abstract List<User> list()
+
     abstract User save(User User)
 
     abstract User findAllByUsername(String username)
@@ -26,8 +28,9 @@ abstract class UserService {
 
         user.validate()
         if (user.hasErrors()) {
-            log.error("Register Failed for user: ${user.username}. Error: ${user.errors}")
-            throw new Exception("User validation failed. ${user.errors}")
+            def usernameError = user.errors.getFieldError('username')
+            log.error("Register Failed for user: ${user.username}. Error: ${usernameError.defaultMessage}")
+            throw new Exception("User validation failed. ${usernameError.defaultMessage}")
         }
 
         Role role = roleService.findByAuthority(Role.USER)

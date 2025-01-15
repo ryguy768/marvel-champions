@@ -2,6 +2,7 @@
 <head>
     <meta name="layout" content="${gspLayout ?: 'main'}"/>
     <title><g:message code='springSecurity.login.title'/></title>
+    <link rel="stylesheet" type="text/css" href="${resource(dir: 'assets/stylesheets', file: 'login-card.css')}"/>
 </head>
 
 <body>
@@ -11,7 +12,10 @@
             <div class="card-body">
                 <h5 class="card-title text-center">Please Login</h5>
                 <g:if test='${flash.message}'>
-                    <div class="alert alert-danger" role="alert">${flash.message}</div>
+                    <div class="alert ${flash.message == 'You have registered successfully. Please login.' ? 'alert-success' : 'alert-danger'}"
+                         role="alert">
+                        ${flash.message}
+                    </div>
                 </g:if>
                 <form class="form-signin" action="${postUrl ?: '/login/authenticate'}" method="POST" id="loginForm"
                       autocomplete="off">

@@ -14,12 +14,6 @@
                     <div class="alert alert-danger" role="alert">${flash.message}</div>
                 </g:if>
                 <form class="form-signin" action="register" method="POST" id="loginForm" autocomplete="off">
-                    <div class="form-group">
-                        <label for="role">Role</label>
-                        <g:select class="form-control" name="role.id"
-                                  from="${marvel.champions.Role.list()}"
-                                  optionKey="id"/>
-                    </div>
 
                     <div class="form-group">
                         <label for="username">Username</label>

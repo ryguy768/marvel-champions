@@ -41,6 +41,7 @@
             <f:field bean="game" property="outcome"/>
             <f:field bean="game" property="funRating"/>
             <f:field bean="game" property="difficultyRating"/>
+            <f:field bean="game" property="heroGames"/>
         </fieldset>
         <fieldset class="buttons">
             <input class="save" type="submit"
