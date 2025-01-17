@@ -1,11 +1,26 @@
-// This is a manifest file that'll be compiled into application.js.
-//
-// Any JavaScript file within this directory can be referenced here using a relative path.
-//
-// You're free to add application-wide JavaScript to this file, but it's generally better
-// to create separate JavaScript files as needed.
-//
-//= require jquery-3.3.1.min
-//= require bootstrap
-//= require popper.min
-//= require_self
+document.addEventListener('DOMContentLoaded', function () {
+    document.getElementById('gameButton').addEventListener('click', function () {
+        loadContent('/game/index', 'mainContent');
+    });
+
+    document.getElementById('userButton').addEventListener('click', function () {
+        loadContent('/user/index', 'mainContent');
+    });
+
+    document.querySelectorAll('.editButton').forEach(function (button) {
+        button.addEventListener('click', function (event) {
+            event.preventDefault();
+            const userId = button.getAttribute('data-user-id');
+            loadContent(`/user/edit/${userId}`, 'editContent');
+        });
+    });
+});
+
+function loadContent(url, targetId) {
+    fetch(url)
+        .then(response => response.text())
+        .then(data => {
+            document.getElementById(targetId).innerHTML = data;
+        })
+        .catch(error => console.error('Error loading content:', error));
+}

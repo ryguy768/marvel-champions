@@ -1,11 +1,11 @@
 <html>
 <head>
-    <meta name="layout" content="${layoutUi}"/>
-    <title><g:message code="default.create.label" args="[entityName]"/></title>
+    <meta name="layout" content="main"/>
+    <title>Create User</title>
 </head>
 
 <body>
-<h3><g:message code="default.create.label" args="[entityName]"/></h3>
+<h3>Create User</h3>
 <g:form controller="user" action="save">
     <div>
         <label for="username"><g:message code="user.username.label" default="Username"/></label>

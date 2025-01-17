@@ -50,4 +50,5 @@ class UserController {
         flash.message = "User deleted successfully."
         redirect action: "index"
     }
+    
 }
