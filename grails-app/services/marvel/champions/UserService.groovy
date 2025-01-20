@@ -2,6 +2,7 @@ package marvel.champions
 
 import grails.gorm.services.Service
 import grails.gorm.transactions.Transactional
+import grails.validation.ValidationException
 
 @Transactional
 @Service(User)
@@ -14,9 +15,21 @@ abstract class UserService {
 
     abstract List<User> list()
 
-    abstract User save(User User)
+    abstract User save(User user)
 
     abstract User findAllByUsername(String username)
+
+    def update(Long id, Map params) {
+        User user = User.get(id)
+        if (user) {
+            user.properties = params
+            if (!user.save(flush: true)) {
+                throw new ValidationException("Validation Error", user.errors)
+            }
+        } else {
+            throw new ValidationException("User not found")
+        }
+    }
 
     User create(String username, String password, String passwordConfirm) {
         if (password != passwordConfirm) {

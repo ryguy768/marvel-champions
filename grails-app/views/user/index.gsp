@@ -20,7 +20,7 @@
             <tr>
                 <td>${user.username}</td>
                 <td>
-                    <button class="editButton" data-user-id="${user.id}">Edit</button>
+                    <g:link controller="user" action="edit" id="${user.id}">Edit</g:link>
                     <g:link controller="user" action="delete" id="${user.id}"
                             onclick="return confirm('Are you sure?')">Delete</g:link>
                 </td>

@@ -10,7 +10,7 @@ abstract class GameService {
 
     abstract Game get(Serializable id)
 
-    abstract List<Game> list(Map args)
+    abstract List<Game> list(Map args = [:])
 
     abstract Long count()
 
