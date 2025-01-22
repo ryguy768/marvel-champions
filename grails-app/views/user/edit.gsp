@@ -1,5 +1,13 @@
+<!doctype html>
+<html>
+<head>
+    <meta name="layout" content="main"/>
+    <title>Edit User</title>
+</head>
+
+<body>
 <div id="edit-user" class="content scaffold-edit" role="main">
-    <h1><g:message code="default.edit.label" args="[entityName]"/></h1>
+    <h1>Edit User</h1>
     <g:if test="${flash.message}">
         <div class="message" role="status">${flash.message}</div>
     </g:if>
@@ -43,8 +51,8 @@
             </div>
 
             <div class="fieldcontain ${hasErrors(bean: user, field: 'accountLocked', 'error')}">
-                <label for="accountLocked">x
-                <g:message code="user.accountLocked.label" default="Account Locked"/>
+                <label for="accountLocked">
+                    <g:message code="user.accountLocked.label" default="Account Locked"/>
                 </label>
                 <g:checkBox name="accountLocked" value="${user?.accountLocked}"/>
             </div>
@@ -55,6 +63,29 @@
                 </label>
                 <g:checkBox name="passwordExpired" value="${user?.passwordExpired}"/>
             </div>
+
+            <div class="fieldcontain">
+                <label for="games">
+                    <g:message code="user.games.label" default="Games"/>
+                </label>
+                <ul>
+                    <g:each in="${games}" var="game">
+                        <li><g:link controller="game" action="show" id="${game.id}">${game}</g:link></li>
+                    </g:each>
+                </ul>
+            </div>
+
+            <div class="fieldcontain">
+                <label for="roles"><g:message code="user.roles.label" default="Roles"/></label>
+                <g:each var="role" in="${allRoles}">
+                    <ul>
+                        <g:hiddenField name="roles" value="false"/>
+                        <g:checkBox name="roles" value="${role.authority}" checked="${roles.contains(role)}"/>
+                        ${role.authority}
+                    </ul>
+                </g:each>
+            </div>
+
         </fieldset>
         <fieldset class="buttons">
             <input class="save" type="submit"

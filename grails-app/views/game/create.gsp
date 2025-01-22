@@ -73,10 +73,8 @@
                 <input type="number" name="difficultyRating" min="0" max="5" required="" id="difficultyRating"/>
             </div>
 
-            <div class="fieldcontain required">
-                <label for="scenario">Heroes</label>
-                <g:link controller="heroGame" action="create">Add Hero</g:link>
-            </div>
+
+
             %{--            <f:all bean="game"/>--}%
         </fieldset>
         <fieldset class="buttons">

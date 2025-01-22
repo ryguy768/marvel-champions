@@ -18,7 +18,7 @@ class GameController {
     def index(Integer max) {
         params.max = Math.min(max ?: 10, 100)
         def currentUser = springSecurityService.currentUser
-        def games = gameService.list(params).findAll { it.user == currentUser }
+        def games = Game.findAllByUser(currentUser, params)
         respond games, model: [gameCount: games.size()]
     }
 

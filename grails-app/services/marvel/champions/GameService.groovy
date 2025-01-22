@@ -10,7 +10,9 @@ abstract class GameService {
 
     abstract Game get(Serializable id)
 
-    abstract List<Game> list(Map args = [:])
+    def findAllByUser(User user) {
+        Game.findAllByUser(user)
+    }
 
     abstract Long count()
 

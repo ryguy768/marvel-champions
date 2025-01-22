@@ -50,7 +50,7 @@
 
             <div class="property-value" aria-labelledby="heroGames-label">
                 <g:each in="${game?.heroGames}" var="heroGame">
-                    <a href="/heroGame/show/${heroGame?.id}">${heroGame}</a><br/>
+                    <a href="/hero/show/${heroGame?.hero?.id}">${heroGame?.hero?.heroName}</a> Aspect: ${heroGame?.aspect}<br/>
                 </g:each>
             </div>
         </li>

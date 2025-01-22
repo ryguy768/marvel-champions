@@ -2,13 +2,15 @@ package marvel.champions
 
 import grails.plugin.springsecurity.annotation.Secured
 import grails.validation.ValidationException
+import grails.gorm.transactions.Transactional
 
 @Secured(['ROLE_ADMIN'])
 class UserController {
 
     UserService userService
+    GameService gameService
 
-    static allowedMethods = [save: "POST", update: "POST", delete: "POST"]
+    static allowedMethods = [save: "POST", update: ["POST", "PUT"], delete: "POST"]
 
     def index() {
         [users: userService.list()]
@@ -20,8 +22,7 @@ class UserController {
 
     def save() {
         try {
-            User user = new User(params)
-            userService.save(user)
+            userService.create(params.username, params.password, params.passwordConfirm)
             flash.message = "User created successfully."
             redirect action: "index"
         } catch (ValidationException e) {
@@ -31,12 +32,24 @@ class UserController {
     }
 
     def edit(Long id) {
-        [user: userService.get(id)]
+        def user = userService.get(id)
+        def games = gameService.findAllByUser(user)
+        def roles = user.getAuthorities()
+        [user: user, games: games, roles: roles, allRoles: Role.list()]
     }
 
+    @Transactional
     def update(Long id) {
         try {
+            User user = userService.get(id)
             userService.update(id, params)
+
+            UserRole.removeAll(user)
+            params.roles.each { roleName ->
+                Role role = Role.findByAuthority(roleName)
+                UserRole.create(user, role, true)
+            }
+
             flash.message = "User updated successfully."
             redirect action: "index"
         } catch (ValidationException e) {
@@ -50,5 +63,5 @@ class UserController {
         flash.message = "User deleted successfully."
         redirect action: "index"
     }
-    
+
 }

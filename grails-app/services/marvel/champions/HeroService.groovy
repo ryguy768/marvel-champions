@@ -9,6 +9,8 @@ abstract class HeroService {
 
     abstract Hero get(Long id)
 
+    abstract List<Hero> list()
+
     abstract Hero save(Hero hero)
 
 }
