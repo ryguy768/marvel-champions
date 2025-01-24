@@ -31,7 +31,8 @@ class GameController {
     def create() {
         def scenarios = scenarioService.list()
         def modularSets = modularSetService.list()
-        respond new Game(params), model: [scenarios: scenarios, modularSets: modularSets]
+        def heroes = Hero.list()
+        respond new Game(params), model: [scenarios: scenarios, modularSets: modularSets, heroes: heroes]
     }
 
     @Secured(['ROLE_ADMIN', 'ROLE_USER'])
@@ -55,7 +56,11 @@ class GameController {
                 flash.message = message(code: 'default.created.message', args: [message(code: 'game.label', default: 'Game'), game.id])
                 redirect game
             }
-            '*' { respond game, [status: CREATED] }
+            '*' {
+                if (!response.isCommitted()) {
+                    respond game, [status: CREATED]
+                }
+            }
         }
     }
 

@@ -102,6 +102,7 @@ img {
     border-bottom: 1px solid #cccccc;
     margin: 0.8em 1em 0.3em;
     padding: 0 0.25em;
+    color: white;
 }
 
 .scaffold-list h1 {
@@ -293,7 +294,7 @@ textarea {
     padding: 0.2em 0.4em;
 }
 
-.form-group {
+.form-set {
     margin-left: 300px;
     margin-bottom: 15px;
     margin-top: 15px;
@@ -793,7 +794,7 @@ table {
     position: absolute;
     top: 20%;
     background-color: white;
-    border: 1px solid #ddd;
+    /*border: 1px solid #ddd;*/
     border-radius: 15px;
 }
 

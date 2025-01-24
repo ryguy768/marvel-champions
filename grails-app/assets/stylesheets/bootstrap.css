@@ -75,7 +75,7 @@ body {
     line-height: 1.5;
     color: #212529;
     text-align: left;
-    background-color: #fff;
+    background-color: #121212;
 }
 
 [tabindex="-1"]:focus {
@@ -5811,10 +5811,12 @@ button.close {
     right: 0;
     bottom: 0;
     left: 0;
+    margin: auto;
     z-index: 1050;
     display: none;
     overflow: hidden;
     outline: 0;
+    background-color: transparent;
 }
 
 .modal-dialog {

@@ -4,6 +4,10 @@
     <meta name="layout" content="main"/>
     <g:set var="entityName" value="${message(code: 'game.label', default: 'Game')}"/>
     <title><g:message code="default.create.label" args="[entityName]"/></title>
+    <link rel="stylesheet" href="${resource(dir: 'css', file: 'bootstrap.css')}" type="text/css"/>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </head>
 
 <body>
@@ -73,9 +77,49 @@
                 <input type="number" name="difficultyRating" min="0" max="5" required="" id="difficultyRating"/>
             </div>
 
+            <div class="fieldcontain required">
+                <label for="hero">Heroes</label>
+                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#heroModal">
+                    Add Hero
+                </button>
+            </div>
 
+            <div class="modal fade" id="heroModal" tabindex="-1" role="dialog" aria-labelledby="heroModalLabel"
+                 aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="heroModalLabel">Add Hero</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
 
-            %{--            <f:all bean="game"/>--}%
+                        <div class="modal-body">
+                            <div class="form-group">
+                                <label for="hero">Hero</label>
+                                <g:select name="hero.id" from="${heroes}" optionKey="id" optionValue="heroName"
+                                          required="" id="hero" class="form-control"/>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="aspect">Aspect</label>
+                                <select name="aspect" id="aspect" class="form-control">
+                                    <option value="Aggression">Aggression</option>
+                                    <option value="Justice">Justice</option>
+                                    <option value="Leadership">Leadership</option>
+                                    <option value="Protection">Protection</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            <button type="submit" class="btn btn-primary">Save Hero</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </fieldset>
         <fieldset class="buttons">
             <g:submitButton name="create" class="save"
