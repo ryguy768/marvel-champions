@@ -12,15 +12,13 @@ class Hero {
     static hasMany = [heroGames: HeroGame]
 
     static constraints = {
-        heroName maxSize: 128, blank: false
+        heroName unique: true, nullable: false
         alterEgo maxSize: 128, blank: false
         release maxSize: 128, blank: false
     }
 
     String toString() {
         return "$heroName ($alterEgo)"
-
-
     }
 
     Double getAvgFunRating() {

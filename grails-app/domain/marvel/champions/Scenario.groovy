@@ -7,7 +7,7 @@ class Scenario {
     Date lastUpdated
 
     static constraints = {
-        scenarioName maxSize: 128, blank: false
+        scenarioName maxSize: 128, nullable: false
     }
 
     String toString() {

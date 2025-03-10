@@ -74,7 +74,14 @@ h3 {
 
 ul {
     padding: 0;
+    list-style-type: none;
 }
+
+.fieldcontain ul {
+    margin-left: 500px;
+    list-style: none;
+}
+
 
 img {
     border: 0;
@@ -95,6 +102,7 @@ img {
     border-bottom: 1px solid #cccccc;
     margin: 0.8em 1em 0.3em;
     padding: 0 0.25em;
+    color: white;
 }
 
 .scaffold-list h1 {
@@ -286,6 +294,18 @@ textarea {
     padding: 0.2em 0.4em;
 }
 
+.form-set {
+    margin-left: 300px;
+    margin-bottom: 15px;
+    margin-top: 15px;
+}
+
+#form-box {
+    margin-left: 400px;
+    margin-right: 800px;
+    border: 1px solid #cccccc;
+}
+
 select {
     padding: 0.2em 0.2em 0.2em 0;
 }
@@ -473,7 +493,7 @@ th {
     background-color: #3f3f3f;
     filter: progid:DXImageTransform.Microsoft.gradient(startColorStr='#ffffff', EndColorStr='#eaeaea');
     -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorStr='#ffffff', EndColorStr='#eaeaea')";
-    color: #2a1111;
+    color: #9a9898;
     font-weight: bold;
     line-height: 1.7em;
     padding: 0.2em 0.6em;
@@ -761,4 +781,67 @@ table {
     width: auto;
     height: auto;
     table-layout: auto;
+}
+
+.modal {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 0.4rem;
+    width: 450px;
+    padding: 1.3rem;
+    min-height: 250px;
+    position: absolute;
+    top: 20%;
+    background-color: white;
+    /*border: 1px solid #ddd;*/
+    border-radius: 15px;
+}
+
+.modal .flex {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.modal input {
+    padding: 0.7rem 1rem;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 0.9em;
+}
+
+.modal p {
+    font-size: 0.9rem;
+    color: #777;
+    margin: 0.4rem 0 0.2rem;
+}
+
+button {
+    cursor: pointer;
+    border: none;
+    font-weight: 600;
+}
+
+.btn {
+    display: inline-block;
+    padding: 0.8rem 1.4rem;
+    font-weight: 700;
+    background-color: black;
+    color: white;
+    border-radius: 5px;
+    text-align: center;
+    font-size: 1em;
+}
+
+.btn-open {
+    position: absolute;
+    bottom: 150px;
+}
+
+.btn-close {
+    transform: translate(10px, -20px);
+    padding: 0.5rem 0.7rem;
+    background: #eee;
+    border-radius: 50%;
 }
