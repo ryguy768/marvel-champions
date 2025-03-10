@@ -5867,7 +5867,7 @@ button.close {
     flex-direction: column;
     width: 100%;
     pointer-events: auto;
-    background-color: #fff;
+    background-color: #242428;
     background-clip: padding-box;
     border: 1px solid rgba(0, 0, 0, 0.2);
     border-radius: 0.3rem;
@@ -5913,6 +5913,7 @@ button.close {
 .modal-title {
     margin-bottom: 0;
     line-height: 1.5;
+    color: white;
 }
 
 .modal-body {
