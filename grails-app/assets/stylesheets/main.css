@@ -283,6 +283,7 @@ label {
     cursor: pointer;
     display: inline-block;
     margin: 0 0.25em 0 0;
+    color: white;
 }
 
 input,
@@ -844,4 +845,7 @@ button {
     padding: 0.5rem 0.7rem;
     background: #eee;
     border-radius: 50%;
+}
+.mt-2{
+    color: white;
 }

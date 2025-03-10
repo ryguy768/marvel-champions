@@ -45,6 +45,20 @@
             </div>
 
             <div class="fieldcontain required">
+                <label for="hero">Heroes</label>
+                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#heroModal">
+                    Add Hero
+                </button>
+            </div>
+
+
+            <div class="fieldcontain required">
+                <label>Selected Heroes</label>
+                <div id="selectedHeroes" class="mt-2"></div>
+                <div id="heroInputs"></div>
+            </div>
+
+            <div class="fieldcontain required">
                 <label for="difficultyLevel">Difficulty Level<span class="required-indicator">*</span></label>
                 <select name="difficultyLevel" id="difficultyLevel">
                     <option value="Standard">Standard</option>
@@ -75,13 +89,6 @@
             <div class="fieldcontain required">
                 <label for="difficultyRating">Difficulty Rating<span class="required-indicator">*</span></label>
                 <input type="number" name="difficultyRating" min="0" max="5" required="" id="difficultyRating"/>
-            </div>
-
-            <div class="fieldcontain required">
-                <label for="hero">Heroes</label>
-                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#heroModal">
-                    Add Hero
-                </button>
             </div>
 
             <div class="modal fade" id="heroModal" tabindex="-1" role="dialog" aria-labelledby="heroModalLabel"
@@ -115,7 +122,7 @@
 
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                            <button type="submit" class="btn btn-primary">Save Hero</button>
+                            <button type="button" class="btn btn-primary" id="addHeroBtn">Save Hero</button>
                         </div>
                     </div>
                 </div>
@@ -127,5 +134,53 @@
         </fieldset>
     </g:form>
 </div>
+<script>
+    $(document).ready(function() {
+        let heroCount = 0;
+
+        console.log("Document ready");
+
+        $("#addHeroBtn").click(function() {
+            console.log("Add hero button clicked");
+
+            const heroId = $("#hero").val();
+            const heroName = $("#hero option:selected").text();
+            const aspect = $("#aspect").val();
+
+            console.log("Selected hero:", heroName, "with aspect:", aspect);
+
+            if (!heroId || !heroName || !aspect) {
+                alert("Please select a hero and aspect");
+                return;
+            }
+
+            const heroElement =
+                '<div class="hero-item mb-2 p-2 border rounded" style="display:flex; justify-content:space-between;">' +
+                '<div><strong>' + heroName + '</strong> - ' + aspect + '</div>' +
+                '<button type="button" class="btn btn-sm btn-danger remove-hero" ' +
+                'data-hero-id="' + heroCount + '">Remove</button>' +
+                '</div>';
+
+            const heroInputs =
+                '<input type="hidden" name="heroes[' + heroCount + '].id" value="' + heroId + '">' +
+                '<input type="hidden" name="heroes[' + heroCount + '].aspect" value="' + aspect + '">';
+
+            $("#selectedHeroes").append(heroElement);
+            $("#heroInputs").append(heroInputs);
+
+            console.log("Added hero element:", $("#selectedHeroes").html());
+
+            heroCount++;
+            $("#heroModal").modal('hide');
+        });
+
+        $(document).on("click", ".remove-hero", function() {
+            const heroId = $(this).data("hero-id");
+            $(this).closest(".hero-item").remove();
+            $(`input[name="heroes[${heroId}].id"]`).remove();
+            $(`input[name="heroes[${heroId}].aspect"]`).remove();
+        });
+    });
+</script>
 </body>
 </html>
