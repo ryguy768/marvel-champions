@@ -45,15 +45,10 @@
             </div>
 
             <div class="fieldcontain required">
-                <label for="hero">Heroes</label>
+                <label>Selected Heroes</label>
                 <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#heroModal">
                     Add Hero
                 </button>
-            </div>
-
-
-            <div class="fieldcontain required">
-                <label>Selected Heroes</label>
                 <div id="selectedHeroes" class="mt-2"></div>
                 <div id="heroInputs"></div>
             </div>
@@ -103,21 +98,23 @@
                         </div>
 
                         <div class="modal-body">
-                            <div class="form-group">
-                                <label for="hero">Hero</label>
-                                <g:select name="hero.id" from="${heroes}" optionKey="id" optionValue="heroName"
-                                          required="" id="hero" class="form-control"/>
-                            </div>
 
-                            <div class="form-group">
-                                <label for="aspect">Aspect</label>
-                                <select name="aspect" id="aspect" class="form-control">
-                                    <option value="Aggression">Aggression</option>
-                                    <option value="Justice">Justice</option>
-                                    <option value="Leadership">Leadership</option>
-                                    <option value="Protection">Protection</option>
-                                </select>
-                            </div>
+                            <iframe width="100%" height="auto" src=""> </iframe>
+%{--                            <div class="form-group">--}%
+%{--                                <label for="hero">Hero</label>--}%
+%{--                                <g:select name="hero.id" from="${heroes}" optionKey="id" optionValue="heroName"--}%
+%{--                                          required="" id="hero" class="form-control"/>--}%
+%{--                            </div>--}%
+
+%{--                            <div class="form-group">--}%
+%{--                                <label for="aspect">Aspect</label>--}%
+%{--                                <select name="aspect" id="aspect" class="form-control">--}%
+%{--                                    <option value="Aggression">Aggression</option>--}%
+%{--                                    <option value="Justice">Justice</option>--}%
+%{--                                    <option value="Leadership">Leadership</option>--}%
+%{--                                    <option value="Protection">Protection</option>--}%
+%{--                                </select>--}%
+%{--                            </div>--}%
                         </div>
 
                         <div class="modal-footer">
@@ -141,37 +138,39 @@
         console.log("Document ready");
 
         $("#addHeroBtn").click(function() {
-            console.log("Add hero button clicked");
-
-            const heroId = $("#hero").val();
-            const heroName = $("#hero option:selected").text();
-            const aspect = $("#aspect").val();
-
-            console.log("Selected hero:", heroName, "with aspect:", aspect);
-
-            if (!heroId || !heroName || !aspect) {
-                alert("Please select a hero and aspect");
-                return;
+            const iframe = document.querySelector('#heroModal iframe');
+            if (iframe && iframe.contentWindow) {
+                iframe.contentWindow.selectCurrentHero();
             }
+        });
 
-            const heroElement =
-                '<div class="hero-item mb-2 p-2 border rounded" style="display:flex; justify-content:space-between;">' +
-                '<div><strong>' + heroName + '</strong> - ' + aspect + '</div>' +
-                '<button type="button" class="btn btn-sm btn-danger remove-hero" ' +
-                'data-hero-id="' + heroCount + '">Remove</button>' +
-                '</div>';
+        $('#heroModal').on('show.bs.modal', function() {
+            $(this).find('iframe').attr('src', 'http://localhost:8080/heroGame/create?newGame=true');
+        });
 
-            const heroInputs =
-                '<input type="hidden" name="heroes[' + heroCount + '].id" value="' + heroId + '">' +
-                '<input type="hidden" name="heroes[' + heroCount + '].aspect" value="' + aspect + '">';
+        window.addEventListener('message', function(event) {
+            if (event.origin !== window.location.origin) return;
 
-            $("#selectedHeroes").append(heroElement);
-            $("#heroInputs").append(heroInputs);
+            if (event.data.type === 'heroSelected') {
+                const hero = event.data.hero;
 
-            console.log("Added hero element:", $("#selectedHeroes").html());
+                const heroElement =
+                    '<div class="hero-item mb-2 p-2 border rounded" style="display:flex; justify-content:space-between;">' +
+                    '<div><strong>' + hero.heroName + '</strong> - ' + hero.aspect + '</div>' +
+                    '<button type="button" class="btn btn-sm btn-danger remove-hero" ' +
+                    'data-hero-id="' + heroCount + '">Remove</button>' +
+                    '</div>';
 
-            heroCount++;
-            $("#heroModal").modal('hide');
+                const heroInputs =
+                    '<input type="hidden" name="heroes[' + heroCount + '].id" value="' + hero.id + '">' +
+                    '<input type="hidden" name="heroes[' + heroCount + '].aspect" value="' + hero.aspect + '">';
+
+                $("#selectedHeroes").append(heroElement);
+                $("#heroInputs").append(heroInputs);
+                heroCount++;
+
+                $('#heroModal').modal('hide');
+            }
         });
 
         $(document).on("click", ".remove-hero", function() {
@@ -181,6 +180,9 @@
             $(`input[name="heroes[${heroId}].aspect"]`).remove();
         });
     });
+
+
+
 </script>
 </body>
 </html>

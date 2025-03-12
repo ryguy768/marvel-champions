@@ -25,6 +25,14 @@ class HeroGameController {
 
     def create() {
         def currentUser = springSecurityService.currentUser
+
+        if(params.newGame) {
+            return [
+                    newGame: true,
+                    heroes: Hero.list()
+            ]
+        }
+
         def userGames = heroGameService.listGamesByUser(currentUser)
         respond new HeroGame(params), model: [
                 userGames: userGames,

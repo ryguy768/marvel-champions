@@ -46,12 +46,18 @@
 
         </li>
         <li class="fieldcontain">
-            <span id="heroGames-label" class="property-label">Heroes</span>
-
-            <div class="property-value" aria-labelledby="heroGames-label">
-                <g:each in="${game?.heroGames}" var="heroGame">
-                    <a href="/hero/show/${heroGame?.hero?.id}">${heroGame?.hero?.heroName}</a> Aspect: ${heroGame?.aspect}<br/>
-                </g:each>
+            <span id="heroes-label" class="property-label">Heroes</span>
+            <div class="property-value" aria-labelledby="heroes-label">
+                <g:if test="${heroGames}">
+                    <ul>
+                        <g:each in="${heroGames}" var="heroGame">
+                            <li>${heroGame.hero.heroName} - ${heroGame.aspect}</li>
+                        </g:each>
+                    </ul>
+                </g:if>
+                <g:else>
+                    No heroes selected
+                </g:else>
             </div>
         </li>
         <li class="fieldcontain">
