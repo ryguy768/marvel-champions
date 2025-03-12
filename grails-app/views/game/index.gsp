@@ -51,8 +51,8 @@
                 <td><g:link action="show" id="${game.id}">${game.toString()}</g:link></td>
                 <td>
                     <ul>
-                        <g:each in="${game.heroGames}" var="heroGame">
-                            <a href="/hero/show/${heroGame?.hero?.id}">${heroGame?.hero?.heroName}</a> Aspect: ${heroGame?.aspect}<br/>
+                        <g:each in="${game?.heroGames}" var="heroGame">
+                            <a href="/hero/show/${heroGame?.hero?.id}">${heroGame?.hero?.heroName}</a> (${heroGame?.aspect})<br/>
                         </g:each>
                     </ul>
                 </td>
