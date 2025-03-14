@@ -45,11 +45,18 @@
             </div>
 
             <div class="fieldcontain required">
-                <label>Selected Heroes</label>
+                <label for="hero">Heroes</label>
                 <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#heroModal">
                     Add Hero
                 </button>
+            </div>
+
+
+            <div class="fieldcontain required">
+                <label>Selected Heroes</label>
+
                 <div id="selectedHeroes" class="mt-2"></div>
+
                 <div id="heroInputs"></div>
             </div>
 
@@ -98,23 +105,21 @@
                         </div>
 
                         <div class="modal-body">
+                            <div class="form-group">
+                                <label for="hero">Hero</label>
+                                <g:select name="hero.id" from="${heroes}" optionKey="id" optionValue="heroName"
+                                          required="" id="hero" class="form-control"/>
+                            </div>
 
-                            <iframe width="100%" height="auto" src=""> </iframe>
-%{--                            <div class="form-group">--}%
-%{--                                <label for="hero">Hero</label>--}%
-%{--                                <g:select name="hero.id" from="${heroes}" optionKey="id" optionValue="heroName"--}%
-%{--                                          required="" id="hero" class="form-control"/>--}%
-%{--                            </div>--}%
-
-%{--                            <div class="form-group">--}%
-%{--                                <label for="aspect">Aspect</label>--}%
-%{--                                <select name="aspect" id="aspect" class="form-control">--}%
-%{--                                    <option value="Aggression">Aggression</option>--}%
-%{--                                    <option value="Justice">Justice</option>--}%
-%{--                                    <option value="Leadership">Leadership</option>--}%
-%{--                                    <option value="Protection">Protection</option>--}%
-%{--                                </select>--}%
-%{--                            </div>--}%
+                            <div class="form-group">
+                                <label for="aspect">Aspect</label>
+                                <select name="aspect" id="aspect" class="form-control">
+                                    <option value="Aggression">Aggression</option>
+                                    <option value="Justice">Justice</option>
+                                    <option value="Leadership">Leadership</option>
+                                    <option value="Protection">Protection</option>
+                                </select>
+                            </div>
                         </div>
 
                         <div class="modal-footer">
@@ -132,57 +137,52 @@
     </g:form>
 </div>
 <script>
-    $(document).ready(function() {
+    $(document).ready(function () {
         let heroCount = 0;
 
         console.log("Document ready");
 
-        $("#addHeroBtn").click(function() {
-            const iframe = document.querySelector('#heroModal iframe');
-            if (iframe && iframe.contentWindow) {
-                iframe.contentWindow.selectCurrentHero();
+        $("#addHeroBtn").click(function () {
+            console.log("Add hero button clicked");
+
+            const heroId = $("#hero").val();
+            const heroName = $("#hero option:selected").text();
+            const aspect = $("#aspect").val();
+
+            console.log("Selected hero:", heroName, "with aspect:", aspect);
+
+            if (!heroId || !heroName || !aspect) {
+                alert("Please select a hero and aspect");
+                return;
             }
+
+            const heroElement =
+                '<div class="hero-item mb-2 p-2 border rounded" style="display:flex; justify-content:space-between;">' +
+                '<div><strong>' + heroName + '</strong> - ' + aspect + '</div>' +
+                '<button type="button" class="btn btn-sm btn-danger remove-hero" ' +
+                'data-hero-id="' + heroCount + '">Remove</button>' +
+                '</div>';
+
+            const heroInputs =
+                '<input type="hidden" name="heroes[' + heroCount + '].id" value="' + heroId + '">' +
+                '<input type="hidden" name="heroes[' + heroCount + '].aspect" value="' + aspect + '">';
+
+            $("#selectedHeroes").append(heroElement);
+            $("#heroInputs").append(heroInputs);
+
+            console.log("Added hero element:", $("#selectedHeroes").html());
+
+            heroCount++;
+            $("#heroModal").modal('hide');
         });
 
-        $('#heroModal').on('show.bs.modal', function() {
-            $(this).find('iframe').attr('src', 'http://localhost:8080/heroGame/create?newGame=true');
-        });
-
-        window.addEventListener('message', function(event) {
-            if (event.origin !== window.location.origin) return;
-
-            if (event.data.type === 'heroSelected') {
-                const hero = event.data.hero;
-
-                const heroElement =
-                    '<div class="hero-item mb-2 p-2 border rounded" style="display:flex; justify-content:space-between;">' +
-                    '<div><strong>' + hero.heroName + '</strong> - ' + hero.aspect + '</div>' +
-                    '<button type="button" class="btn btn-sm btn-danger remove-hero" ' +
-                    'data-hero-id="' + heroCount + '">Remove</button>' +
-                    '</div>';
-
-                const heroInputs =
-                    '<input type="hidden" name="heroes[' + heroCount + '].id" value="' + hero.id + '">' +
-                    '<input type="hidden" name="heroes[' + heroCount + '].aspect" value="' + hero.aspect + '">';
-
-                $("#selectedHeroes").append(heroElement);
-                $("#heroInputs").append(heroInputs);
-                heroCount++;
-
-                $('#heroModal').modal('hide');
-            }
-        });
-
-        $(document).on("click", ".remove-hero", function() {
+        $(document).on("click", ".remove-hero", function () {
             const heroId = $(this).data("hero-id");
             $(this).closest(".hero-item").remove();
             $(`input[name="heroes[${heroId}].id"]`).remove();
             $(`input[name="heroes[${heroId}].aspect"]`).remove();
         });
     });
-
-
-
 </script>
 </body>
 </html>

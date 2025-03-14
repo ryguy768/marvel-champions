@@ -3,19 +3,23 @@ package marvel.champions
 import grails.gorm.services.Service
 
 @Service(HeroGame)
-interface HeroGameService {
+abstract class HeroGameService {
 
-    HeroGame get(Serializable id)
+    abstract HeroGame get(Serializable id)
 
-    List<HeroGame> listGamesByUser(User user)
+    abstract List<HeroGame> listGamesByUser(User user)
 
-    Long count()
+    abstract Long count()
 
-    void delete(Serializable id)
+    abstract void delete(Serializable id)
 
-    HeroGame save(Game game, Hero hero, HeroGame.Aspect aspect)
+    abstract HeroGame save(Game game, Hero hero, HeroGame.Aspect aspect)
 
-    HeroGame save(HeroGame heroGame)
+    abstract HeroGame save(HeroGame heroGame)
+
+    List<HeroGame> findAllByUser(User user) {
+        HeroGame.findAllByUser(user)
+    }
 
 
 }

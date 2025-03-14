@@ -13,6 +13,7 @@ class Hero {
 
     static constraints = {
         heroName unique: true, nullable: false
+        aspect nullable: true, blank: false
         alterEgo maxSize: 128, blank: false
         release maxSize: 128, blank: false
     }
