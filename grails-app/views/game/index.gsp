@@ -4,6 +4,7 @@
     <meta name="layout" content="main"/>
     <g:set var="entityName" value="${message(code: 'game.label', default: 'Game')}"/>
     <title><g:message code="default.list.label" args="[entityName]"/></title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
 
 <body>
@@ -13,8 +14,7 @@
 <div class=" nav" role="navigation">
     <ul>
         <li><a class="home" href="${createLink(uri: '/')}"><g:message code="default.home.label"/></a></li>
-        <li><g:link class="create" action="create"><g:message code="default.new.label"
-                                                              args="[entityName]"/></g:link></li>
+        <li><a id="newGameBtn" class="create" href="/game/create">New Game</a></li>
     </ul>
 </div>
 
@@ -71,6 +71,21 @@
     <div class="pagination">
         <g:paginate total="${gameCount ?: 0}"/>
     </div>
+
+    <script>
+        $(document).ready(function () {
+            console.log("Document ready");
+
+            $("#newGameBtn").click(function (event) {
+                event.preventDefault();
+                console.log("New game button clicked");
+                const tempId = 'temp-id-' + Date.now() + '-' + Math.random();
+                localStorage.setItem('tempId', tempId);
+                console.log("Temporary ID stored:", tempId);
+                window.location.href = $(this).attr('href');
+            });
+        });
+    </script>
 </div>
 </body>
 </html>

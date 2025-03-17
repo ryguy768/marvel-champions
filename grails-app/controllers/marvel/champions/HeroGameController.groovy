@@ -16,7 +16,9 @@ class HeroGameController {
 
     def index(Integer max) {
         params.max = Math.min(max ?: 10, 100)
-        respond heroGameService.list(params), model: [heroGameCount: heroGameService.count()]
+        def currentUser = springSecurityService.currentUser
+        def heroGames = HeroGame.findAllByUser(currentUser, params)
+        respond heroGames, model: [heroGameCount: heroGames.size()]
     }
 
     def show(Long id) {
@@ -108,6 +110,36 @@ class HeroGameController {
             }
             '*' { render status: NOT_FOUND }
         }
+    }
+
+    @Secured(["ROLE_ADMIN", "ROLE_USER"])
+    def createAsync() {
+        def gameId = params.long("gameId")
+        def heroId = params.long("heroId")
+        def aspect = params.aspect
+        def currentUser = springSecurityService.currentUser
+
+        if (!gameId || !heroId || !aspect) {
+            render status: BAD_REQUEST, text: "Missing parameters"
+            return
+        }
+
+        def gameInstance = Game.get(gameId)
+        def heroInstance = Hero.get(heroId)
+        if (!gameInstance || !heroInstance) {
+            render status: NOT_FOUND, text: "Game or Hero not found"
+            return
+        }
+
+        def heroGame = new HeroGame(
+                game: gameInstance,
+                hero: heroInstance,
+                aspect: aspect,
+                user: currentUser
+        )
+
+        heroGameService.save(heroGame)
+        render text: "HeroGame created successfully"
     }
 
 }

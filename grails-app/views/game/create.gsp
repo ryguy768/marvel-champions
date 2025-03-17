@@ -5,7 +5,7 @@
     <g:set var="entityName" value="${message(code: 'game.label', default: 'Game')}"/>
     <title><g:message code="default.create.label" args="[entityName]"/></title>
     <link rel="stylesheet" href="${resource(dir: 'css', file: 'bootstrap.css')}" type="text/css"/>
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </head>
@@ -37,6 +37,8 @@
     </g:hasErrors>
     <g:form resource="${this.game}" method="POST">
         <fieldset class="form">
+
+            <g:hiddenField name="id" value="${this.game?.id}" id="gameId"/>
 
             <div class="fieldcontain required">
                 <label for="scenario">Scenario<span class="required-indicator">*</span></label>
@@ -139,41 +141,71 @@
 <script>
     $(document).ready(function () {
         let heroCount = 0;
+        let tempId = localStorage.getItem('tempId');
 
         console.log("Document ready");
+
+        if (tempId) {
+            $("#gameId").val(tempId);
+            console.log("Temporary id set:", tempId);
+        } else {
+            console.log("Temporary id not found in localStorage");
+        }
 
         $("#addHeroBtn").click(function () {
             console.log("Add hero button clicked");
 
+            const gameId = $("#gameId").val();
             const heroId = $("#hero").val();
             const heroName = $("#hero option:selected").text();
             const aspect = $("#aspect").val();
 
             console.log("Selected hero:", heroName, "with aspect:", aspect);
 
-            if (!heroId || !heroName || !aspect) {
+            if (!gameId || !heroId || !heroName || !aspect) {
                 alert("Please select a hero and aspect");
                 return;
             }
 
-            const heroElement =
-                '<div class="hero-item mb-2 p-2 border rounded" style="display:flex; justify-content:space-between;">' +
-                '<div><strong>' + heroName + '</strong> - ' + aspect + '</div>' +
-                '<button type="button" class="btn btn-sm btn-danger remove-hero" ' +
-                'data-hero-id="' + heroCount + '">Remove</button>' +
-                '</div>';
+            const data = {
+                gameId: gameId,
+                heroId: heroId,
+                aspect: aspect
+            };
 
-            const heroInputs =
-                '<input type="hidden" name="heroes[' + heroCount + '].id" value="' + heroId + '">' +
-                '<input type="hidden" name="heroes[' + heroCount + '].aspect" value="' + aspect + '">';
+            console.log("Sending the data:", data);
 
-            $("#selectedHeroes").append(heroElement);
-            $("#heroInputs").append(heroInputs);
+            $.ajax({
+                type: "POST",
+                url: "/heroGame/createAsync",
+                data: data,
+                success: function (response) {
+                    console.log("Success-", response);
 
-            console.log("Added hero element:", $("#selectedHeroes").html());
+                    const heroElement =
+                        '<div class="hero-item mb-2 p-2 border rounded" style="display:flex; justify-content:space-between;">' +
+                        '<div><strong>' + heroName + '</strong> - ' + aspect + '</div>' +
+                        '<button type="button" class="btn btn-sm btn-danger remove-hero" ' +
+                        'data-hero-id="' + heroCount + '">Remove</button>' +
+                        '</div>';
 
-            heroCount++;
-            $("#heroModal").modal('hide');
+                    const heroInputs =
+                        '<input type="hidden" name="heroes[' + heroCount + '].id" value="' + heroId + '">' +
+                        '<input type="hidden" name="heroes[' + heroCount + '].aspect" value="' + aspect + '">';
+
+                    $("#selectedHeroes").append(heroElement);
+                    $("#heroInputs").append(heroInputs);
+
+                    console.log("Added hero element:", $("#selectedHeroes").html());
+
+                    heroCount++;
+                    $("#heroModal").modal('hide');
+                },
+                error: function (xhr, status, error) {
+                    console.log("Error:", status, error);
+                    alert(xhr.responseText || "Failed to add hero");
+                }
+            });
         });
 
         $(document).on("click", ".remove-hero", function () {

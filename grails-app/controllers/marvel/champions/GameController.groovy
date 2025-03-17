@@ -56,17 +56,17 @@ class GameController {
                     heroGameService.save(heroGame)
                 }
             }
+
+            request.withFormat {
+                form multipartForm {
+                    flash.message = message(code: 'default.created.message', args: [message(code: 'game.label', default: 'Game'), game.id])
+                    redirect(action: "show", id: game.id)
+                }
+                '*' { respond game, [status: CREATED] }
+            }
         } catch (ValidationException e) {
             respond game.errors, view: 'create'
             return
-        }
-
-        request.withFormat {
-            form multipartForm {
-                flash.message = message(code: 'default.created.message', args: [message(code: 'game.label', default: 'Game'), game.id])
-                redirect game
-            }
-            '*' { respond game, [status: CREATED] }
         }
     }
 
