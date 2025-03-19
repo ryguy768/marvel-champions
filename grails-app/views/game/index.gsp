@@ -79,7 +79,7 @@
             $("#newGameBtn").click(function (event) {
                 event.preventDefault();
                 console.log("New game button clicked");
-                const tempId = 'temp-id-' + Date.now() + '-' + Math.random();
+                const tempId = 'temp-id-' + Date.now();
                 localStorage.setItem('tempId', tempId);
                 console.log("Temporary ID stored:", tempId);
                 window.location.href = $(this).attr('href');

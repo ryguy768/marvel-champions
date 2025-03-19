@@ -11,6 +11,7 @@ class HeroGameController {
 
     HeroGameService heroGameService
     SpringSecurityService springSecurityService
+    GameService gameService
 
     static allowedMethods = [save: 'POST', update: 'PUT', delete: 'DELETE']
 
@@ -114,8 +115,8 @@ class HeroGameController {
 
     @Secured(["ROLE_ADMIN", "ROLE_USER"])
     def createAsync() {
-        def gameId = params.long("gameId")
-        def heroId = params.long("heroId")
+        def gameId = params.gameId
+        def heroId = params.heroId
         def aspect = params.aspect
         def currentUser = springSecurityService.currentUser
 
@@ -124,7 +125,7 @@ class HeroGameController {
             return
         }
 
-        def gameInstance = Game.get(gameId)
+        def gameInstance = gameService.findByTempId(gameId)
         def heroInstance = Hero.get(heroId)
         if (!gameInstance || !heroInstance) {
             render status: NOT_FOUND, text: "Game or Hero not found"
@@ -138,8 +139,11 @@ class HeroGameController {
                 user: currentUser
         )
 
-        heroGameService.save(heroGame)
-        render text: "HeroGame created successfully"
+        try {
+            heroGameService.save(heroGame)
+            render status: OK, text: "HeroGame created successfully"
+        } catch (ValidationException e) {
+            render status: UNPROCESSABLE_ENTITY, text: "Validation failed: ${e.message}"
+        }
     }
-
 }

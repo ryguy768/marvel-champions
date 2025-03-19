@@ -178,7 +178,11 @@
             $.ajax({
                 type: "POST",
                 url: "/heroGame/createAsync",
-                data: data,
+                data: {
+                    gameId: gameId,
+                    heroId: heroId,
+                    aspect: aspect
+                },
                 success: function (response) {
                     console.log("Success-", response);
 

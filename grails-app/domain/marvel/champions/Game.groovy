@@ -12,6 +12,7 @@ class Game {
 
     User user
     Scenario scenario
+    String tempId
     DifficultyLevel difficultyLevel
     ModularSet modularSet
     Outcome outcome
@@ -32,6 +33,7 @@ class Game {
         funRating min: 0, max: 5, nullable: false
         difficultyRating min: 0, max: 5, nullable: false
         user bindable: false, nullable: false
+        tempId nullable: true
     }
 
     @Override

@@ -14,6 +14,10 @@ abstract class GameService {
         Game.findAllByUser(user)
     }
 
+    def findByTempId(String tempId) {
+        Game.findByTempId(tempId)
+    }
+
     abstract Long count()
 
     abstract void delete(Serializable id)
